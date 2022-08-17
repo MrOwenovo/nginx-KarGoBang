@@ -16,7 +16,7 @@
     <input type="text" placeholder="用户名" name="username" id="username">
     <input type="password" placeholder="密码" name="password" id="password">
     <input type="text" placeholder="邮箱" name="email" id="email">
-    <input type="text" placeholder="邮箱验证码" name="input_email" id="input_email">
+    <input type="text" placeholder="邮箱验证码" name="code" id="code">
     <input type="button"  onclick="verify()" id="button_verify" class="btn" value="获取邮箱验证码">
     <input type="button"  onclick="register()" id="button_register" class="btn" value="注  册">
 
@@ -32,6 +32,8 @@
     function register() {
         var username = $('#username').val()
         var password = $('#password').val()
+        var email = $('#email').val()
+        var code = $('#code').val()
         if ($('#input_email').val() === "") {
             window.alert("验证码不能为空!")
             return false;
@@ -51,6 +53,8 @@
             data: {
                 'username':username,
                 'password': password,
+                'email': email,
+                'code':code,
 
             },
             dataType:"json",
