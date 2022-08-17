@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <meta http-equiv="content-type" content="text/html; charset=GBK">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <title>加入房间</title>
+    <link rel="stylesheet" href="static/css/addRoom.css">
+   <link rel="shortcut icon" href="static/images/favicon.ico">
+
+</head>
+
+<body>
+<div class="container">
+    <div class="tit">加入房间</div>
+    <input type="text" placeholder="房间号" onclick="initText()" id="number">
+    <input type="password" placeholder="加密号" onclick="initPassword()" id="password">
+    <button onclick="addRoom()">加入</button>
+<!--    <input type="text" th:name="${_csrf.getParameterName()}" th:value="${_csrf.token}" hidden>-->
+</div>
+<div class="square">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="circle">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+<script>
+    function addRoom() {
+        var number=$("#number").val()
+        var password=$("#password").val()
+        if (number.length>0&&number.length<=15){
+            if (password.length >= 0 && password.length <= 6) {
+                $.ajax({
+                    type:'post',
+                    url:'/api/room/addRoom',
+                    async:true,
+                    data:{
+                        'number':number,
+                        'password':password,
+                    },
+                    dataType:'json',
+                    xhrFields:{
+                        withCredentials : true,
+                    },
+                    success: function (data) {
+                        if (data.code === 200) {
+                            window.location.href = "https://f01-1309918226.file.myqcloud.com/91/2022/08/17/KaGoBang-%E5%90%8E%E6%89%8B/loading.html?x-cos-traffic-limit=819200";
+                        } else {
+                            if (data.code === 401)
+                                window.location="/login.html"
+                        }
+                    },
+                    error: function (data) {
+                        alert("服务器未连接!")
+                    },
+                    })
+            }else{
+                $("#password").attr("placeholder", "加密号长度在0-6之间").val("")
+            }
+        }else{
+            $("#number").attr("placeholder", "房间号长度在0-12之间").val("")
+        }
+    };
+    function initText() {
+        $("#number").attr("placeholder", "房间号")
+    }
+
+    function initPassword() {
+        $("#password").attr("placeholder", "加密号")
+    }
+
+</script>
+</html>

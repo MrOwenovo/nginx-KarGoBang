@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=GBK">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <title>创建房间</title>
+    <link rel="stylesheet" href="static/css/createRoom.css">
+    <link rel="shortcut icon" href="static/images/favicon.ico">
+
+</head>
+
+<body>
+<div class="container">
+    <div class="tit">创建房间</div>
+<!--    <form method="post" >-->
+    <input type="text" placeholder="房间号" id="number" onclick="initText()">
+    <button onclick="submitRoomNumber()">创建</button>
+<!--    </form>-->
+    <div class="container-checkBox">
+        <label>
+            <input type="checkbox" name="是否加密?" onclick="location.href='/createRoomSecret.html'">
+            <span>是否加密?</span>
+        </label>
+    </div>
+<!--    <input type="text" th:name="${_csrf.getParameterName()}" th:value="${_csrf.token}" hidden>-->
+</div>
+<div class="square">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="circle">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+<script>
+    function submitRoomNumber() {
+        var number=$("#number").val()
+        if (number.length>0&&number.length<=15){
+            $.ajax({
+                type: "post",
+                url: '/api/room/createRoom',
+                async: false,
+                data: {
+                    'number':number,
+                },
+                dataType:"json",
+                xhrFields:{
+                    withCredentials: true,
+                },
+                success: function (data) {
+                    if (data.code === 200) {
+                        window.alert("房间创建成功,有效时间10分钟~")
+                        window.location = "/room.html";
+                    } else {
+                        window.alert(data.message)
+                        if (data.code === 401)
+                            window.location="/login.html"
+                    }
+                },
+                error: function (data) {
+                    alert("服务器未连接!")
+                },
+
+            });
+        }else{
+            $("#number").attr("placeholder", "房间号长度在0-15之间").val("")
+        }
+    };
+    function initText() {
+        $("#number").attr("placeholder", "房间号")
+    }
+
+
+</script>
+
+</html>

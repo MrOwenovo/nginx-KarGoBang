@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/register.css">
+    <link rel="shortcut icon" href="static/images/favicon.ico">
+    <title>注册...</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+</head>
+<body style="'background:url('+'../static/images/wallpaper.jpg'+') no-repeat;background-size: cover;background-attachment: fixed;'">
+<form class="login" method="post" id="login_form">
+    <p>Register</p>
+    <input type="text" placeholder="用户名" name="username" id="username">
+    <input type="password" placeholder="密码" name="password" id="password">
+    <input type="text" placeholder="邮箱" name="email" id="email">
+    <input type="text" placeholder="邮箱验证码" name="input_email" id="input_email">
+    <input type="button"  onclick="verify()" id="button_verify" class="btn" value="获取邮箱验证码">
+    <input type="button"  onclick="register()" id="button_register" class="btn" value="注  册">
+
+
+    <input type="hidden" name="remember" value="remember-me">
+<!--    <input type="text" th:name="${_csrf.getParameterName()}" th:value="${_csrf.token}" hidden>-->
+</form>
+
+</body>
+<!--suppress JSJQueryEfficiency -->
+<script>
+
+    function register() {
+        var username = $('#username').val()
+        var password = $('#password').val()
+        if ($('#input_email').val() === "") {
+            window.alert("验证码不能为空!")
+            return false;
+        }
+        if (username === "") {
+            window.alert("账号不能为空!")
+            return false;
+        }
+        if (password === "") {
+            window.alert("密码不能为空!")
+            return false;
+        }
+        $.ajax({
+            type: "post",
+            url: '/api/auth/register',
+            async: false,
+            data: {
+                'username':username,
+                'password': password,
+
+            },
+            dataType:"json",
+            xhrFields:{
+                withCredentials: true,
+            },
+            success: function (data) {
+                if (data.code === 200) {
+                    window.location = "/select.html";
+                } else {
+                    window.alert(data.message)
+                }
+            },
+            error: function (data) {
+                alert("服务器未连接!")
+            },
+
+        });
+    }
+    function verify() {
+        var email = $('#email').val();
+        console.log(email)
+        if (email === "") {
+            window.alert("邮箱不能为空!");
+            return false;
+        } else {
+            if (!checkEmail(email)) {
+                window.alert("邮箱格式不正确!");
+                $('#email').val("");
+                return false;
+            }
+        }
+        $.ajax({
+            type: "post",
+            url: '/api/auth/verify',
+            async: false,
+            data: {
+                'email': email,
+            },
+            dataType:"json",
+            xhrFields:{
+                withCredentials: true,
+            },
+            success: function (data) {
+                if (data.code === 200) {
+                    window.alert("发送验证码成功!");
+                } else {
+                    window.alert(data.message)
+                }
+            },
+            error: function (data) {
+                alert("服务器未连接!")
+            },
+
+        });
+    }
+
+    function checkEmail() {
+        var myforms = document.forms;
+        var myemail = myforms[0].email.value;
+        var myReg = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
+
+        if (myReg.test(myemail)) {
+            return true;
+        } else {
+            myspan.innerText = "邮箱格式不对!";
+            return false;
+        }
+    }
+
+
+</script>
+</html>
