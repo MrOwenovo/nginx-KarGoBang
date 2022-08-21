@@ -21,8 +21,6 @@
             if (data.code == 401) {
                 window.location = "/login.html";
                 window.alert("您当前为游客身份，请前往登录或注册!")
-            }else {
-                alert(data.message)
             }
         },
         error: function (data) {
