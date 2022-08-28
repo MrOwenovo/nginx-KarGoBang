@@ -4,19 +4,26 @@
 
 <head>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <meta http-equiv="content-type" content="text/html; charset=GBK">
+    <meta charset="utf-8">
+
+    <meta http-equiv="content-type" content="text/html;  ">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
-    <title>�ȴ����˼���</title>
+    <title>等待他人加入</title>
     <link rel="stylesheet" href="static/css/room.css">
+    <link rel="stylesheet" href="static/css/left.css">
     <link rel="stylesheet" href="static/css/sheep.css">
     <link rel="shortcut icon" href="static/images/favicon.ico">
+    <link rel="stylesheet" href="static/css/input.css">
+    <link rel="stylesheet" href="static/css/checkBox.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/card.css">
 
 </head>
 
 <body>
 <div class="container">
-    <div class="tit">�ȴ����˼���</div>
+    <div class="tit">等待他人加入</div>
     <div class="loader"></div>
 <!--    <input type="text" th:name="${_csrf.getParameterName()}" th:value="${_csrf.token}" hidden>-->
 </div>
@@ -37,6 +44,82 @@
         <li></li>
         <li></li>
     </ul>
+</div>
+<div class="container-left">
+    <!-- --t是自定义属性，通过var函数可调用 -->
+    <li class="li-left" style="--t:20%;">
+        <a class="a-left" href="javascript:window.location='/home.html'">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:30%;">
+        <a class="a-left" href="javascript:openUserDetails()">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:40%;">
+        <a class="a-left" href="javascript:window.location='/500page.html'">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:50%;">
+        <a class="a-left" href="javascript:window.location='/select.html'">
+            <i class="fa fa-gamepad" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:60%;">
+        <a class="a-left" href="https://github.com/MrOwenovo?tab=repositories">
+            <!--            <i class="fa fa-shopping-bag" aria-hidden="true"></i>-->
+            <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:70%;">
+        <a class="a-left" href="javascript:logout()">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </a>
+    </li>
+    <div class="top"></div>
+    <div class="middle"></div>
+    <div class="bottom"></div>
+</div>
+<div id="card-user" class="card-user">
+    <div class="imgBox">
+        <img class="img-user" src="static/images/girl.png" alt=""/>
+    </div>
+    <div class="content-user">
+        <div class="details-user">
+            <h2 id="card-name" class="h2-user">KarGoBang
+                <i id="card-sex" class="fa fa-venus i-user" aria-hidden="true"></i>
+                <!--                <i class="fa fa-mars i-user" aria-hidden="true"></i>-->
+                <br/>
+                <span id="card-message" class="span-user">点击下方登录</span></h2>
+            <div class="data">
+                <h3 id="card-data1" class="h3-user">
+                    0
+                    <br/>
+                    <span class="span-user">游戏局数</span>
+                </h3>
+                <h3 id="card-data2" class="h3-user">
+                    0%
+                    <br/>
+                    <span class="span-user">游戏胜率</span>
+                </h3>
+                <h3 id="card-data3" class="h3-user">
+                    0
+                    <br/>
+                    <span class="span-user">熄灯关数</span>
+                </h3>
+            </div>
+            <div class="actionBtn">
+                <button id="card-button1" class="button-user" type="button" onclick="window.location='/login.html'">
+                    登录用户
+                </button>
+                <button id="card-button2" class="button-user" type="button" onclick="window.location='/register.html'">
+                    注册用户
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="img"></div>
 
@@ -62,7 +145,7 @@
                     } else if (data.code === 401) {
                         window.location = "/login.html";
                     }else {
-                        //û�н��յ�
+                        //没有接收到
                     }
                 },
                 error: function (data) {
@@ -71,6 +154,8 @@
         })
     }
 </script>
+<script src="static/js/left.js"></script>
+
 <script src="static/js/sheep.js"></script>
 
 </html>

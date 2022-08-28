@@ -4,14 +4,19 @@
 
 <head>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-    <meta http-equiv="content-type" content="text/html; charset=GBK">
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; ">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
-    <title>¼ÓÈë·¿¼ä</title>
+    <title>åŠ å…¥æˆ¿é—´</title>
     <link rel="stylesheet" href="static/css/addRoom.css">
     <link rel="stylesheet" href="static/css/sheep.css">
     <link rel="stylesheet" href="static/css/hall.css">
+    <link rel="stylesheet" href="static/css/left.css">
+    <link rel="stylesheet" href="static/css/input.css">
+    <link rel="stylesheet" href="static/css/checkBox.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/card.css">
 
     <link rel="shortcut icon" href="static/images/favicon.ico">
 
@@ -20,109 +25,190 @@
 <body>
 
 <div class="container">
-    <div class="tit">¼ÓÈë·¿¼ä</div>
-    <input type="text" placeholder="·¿¼äºÅ" onclick="initText()" id="number">
-    <input type="password" placeholder="¼ÓÃÜºÅ" onclick="initPassword()" id="password">
-    <button onclick="addRoom()">¼ÓÈë</button>
+    <div class="tit">åŠ å…¥æˆ¿é—´</div>
+    <input class="container-input" type="text" placeholder="æˆ¿é—´å·" onclick="initText()" id="number">
+    <input class="container-input" type="password" placeholder="åŠ å¯†å·" onclick="initPassword()" id="password">
+    <button class="container-button" onclick="addRoom()">åŠ å…¥</button>
 <!--    <input type="text" th:name="${_csrf.getParameterName()}" th:value="${_csrf.token}" hidden>-->
 </div>
 <div class="square">
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+    <ul class="container-ul">
+        <li class="container-li"></li>
+        <li class="container-li"></li>
+        <li class="container-li"></li>
+        <li class="container-li"></li>
+        <li class="container-li"></li>
     </ul>
 </div>
 <div class="circle">
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+    <ul class="container-ul">
+        <li class="container-li"></li>
+        <li class="container-li"></li>
+        <li class="container-li"></li>
+        <li class="container-li"></li>
+        <li class="container-li"></li>
     </ul>
 </div>
 
 <div class="container-hall">
     <div class="redo"></div>
-    <!-- --dÊÇ×Ô¶¨ÒåÊôĞÔ,¿ÉÍ¨¹ıvarº¯Êı¶ÔÆäµ÷ÓÃ -->
-    <div class="card-user" style="--d:-1">
+    <!-- --dæ˜¯è‡ªå®šä¹‰å±æ€§,å¯é€šè¿‡varå‡½æ•°å¯¹å…¶è°ƒç”¨ -->
+    <div class="card-hall" style="--d:-1">
         <div class="content-hall">
             <div class="img-hall">
-                <img src="static/images/1.jpeg" alt="">
+                <img class="sub-img-hall" src="static/images/1.jpeg" alt="">
             </div>
             <div class="detail">
-                <span> </span>
-                <p> </p>
+                <span class="span-hall"> </span>
+                <p class="p-hall"> </p>
             </div>
         </div>
-        <a href="#">¼ÓÈë</a>
+        <a href="#">åŠ å…¥</a>
     </div>
 
-    <div class="card-user" style="--d:0">
+    <div class="card-hall" style="--d:0">
         <div class="content-hall">
             <div class="img-hall">
-                <img src="static/images/2.jpeg" alt="">
+                <img class="sub-img-hall" src="static/images/2.jpeg" alt="">
             </div>
             <div class="detail">
-                <span> </span>
-                <p> </p>
+                <span class="span-hall"> </span>
+                <p class="p-hall"> </p>
             </div>
         </div>
-        <a href="#">¼ÓÈë</a>
+        <a href="#">åŠ å…¥</a>
     </div>
 
-    <div class="card-user" style="--d:1">
+    <div class="card-hall" style="--d:1">
         <div class="content-hall">
             <div class="img-hall">
-                <img src="static/images/3.jpeg" alt="">
+                <img class="sub-img-hall" src="static/images/3.jpeg" alt="">
             </div>
             <div class="detail">
-                <span> </span>
-                <p> </p>
+                <span class="span-hall"> </span>
+                <p class="p-hall"> </p>
             </div>
         </div>
-        <a href="#">¼ÓÈë</a>
+        <a href="#">åŠ å…¥</a>
     </div>
 
-    <div class="card-user" style="--d:2">
+    <div class="card-hall" style="--d:2">
         <div class="content-hall">
             <div class="img-hall">
-                <img src="static/images/4.jpeg" alt="">
+                <img class="sub-img-hall" src="static/images/4.jpeg" alt="">
             </div>
             <div class="detail">
-                <span> </span>
-                <p> </p>
+                <span class="span-hall"> </span>
+                <p class="p-hall"> </p>
             </div>
         </div>
-        <a href="#">¼ÓÈë</a>
+        <a href="#">åŠ å…¥</a>
     </div>
 
-    <div class="card-user" style="--d:3">
+    <div class="card-hall" style="--d:3">
         <div class="content-hall">
             <div class="img-hall">
-                <img src="static/images/5.jpeg" alt="">
+                <img class="sub-img-hall" src="static/images/5.jpeg" alt="">
             </div>
             <div class="detail">
-                <span> </span>
-                <p> </p>
+                <span class="span-hall"> </span>
+                <p class="p-hall"> </p>
             </div>
         </div>
-        <a href="#">¼ÓÈë</a>
+        <a href="#">åŠ å…¥</a>
     </div>
 </div>
-
+<div class="container-left">
+    <!-- --tæ˜¯è‡ªå®šä¹‰å±æ€§ï¼Œé€šè¿‡varå‡½æ•°å¯è°ƒç”¨ -->
+    <li class="li-left" style="--t:20%;">
+        <a class="a-left" href="javascript:window.location='/home.html'">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:30%;">
+        <a class="a-left" href="javascript:openUserDetails()">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:40%;">
+        <a class="a-left" href="javascript:window.location='/500page.html'">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:50%;">
+        <a class="a-left" href="javascript:window.location='/select.html'">
+            <i class="fa fa-gamepad" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:60%;">
+        <a class="a-left" href="https://github.com/MrOwenovo?tab=repositories">
+            <!--            <i class="fa fa-shopping-bag" aria-hidden="true"></i>-->
+            <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:70%;">
+        <a class="a-left" href="javascript:logout()">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </a>
+    </li>
+    <div class="top"></div>
+    <div class="middle"></div>
+    <div class="bottom"></div>
+</div>
+<div id="card-user" class="card-user">
+    <div class="imgBox">
+        <img class="img-user" src="static/images/girl.png" alt=""/>
+    </div>
+    <div class="content-user">
+        <div class="details-user">
+            <h2 id="card-name" class="h2-user">KarGoBang
+                <i id="card-sex" class="fa fa-venus i-user" aria-hidden="true"></i>
+                <!--                <i class="fa fa-mars i-user" aria-hidden="true"></i>-->
+                <br/>
+                <span id="card-message" class="span-user">ç‚¹å‡»ä¸‹æ–¹ç™»å½•</span></h2>
+            <div class="data">
+                <h3 id="card-data1" class="h3-user">
+                    0
+                    <br/>
+                    <span class="span-user">æ¸¸æˆå±€æ•°</span>
+                </h3>
+                <h3 id="card-data2" class="h3-user">
+                    0%
+                    <br/>
+                    <span class="span-user">æ¸¸æˆèƒœç‡</span>
+                </h3>
+                <h3 id="card-data3" class="h3-user">
+                    0
+                    <br/>
+                    <span class="span-user">ç†„ç¯å…³æ•°</span>
+                </h3>
+            </div>
+            <div class="actionBtn">
+                <button id="card-button1" class="button-user" type="button" onclick="window.location='/login.html'">
+                    ç™»å½•ç”¨æˆ·
+                </button>
+                <button id="card-button2" class="button-user" type="button" onclick="window.location='/register.html'">
+                    æ³¨å†Œç”¨æˆ·
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="img"></div>
 
 </body>
 <script>
-    function redo() {  //Ë¢ĞÂ´óÌü
+    $(function () {
+        $(".h2-user").css("transform", "translateY(-2px)");
+        $(".data").css("transform", "translateY(-2px)");
+        $(".h2-user").css("font-size", "1.05em");
+        $(".span-user").css("font-size", "0.55em");
+    });
+    function redo() {  //åˆ·æ–°å¤§å…
 
     }
 
-    function initFall() {  //³õÊ¼»¯´óÌü
+    function initFall() {  //åˆå§‹åŒ–å¤§å…
 
     }
     function addRoom() {
@@ -157,21 +243,24 @@
                     },
                     })
             }else{
-                $("#password").attr("placeholder", "¼ÓÃÜºÅ³¤¶ÈÔÚ0-6Ö®¼ä").val("")
+                $("#password").attr("placeholder", "åŠ å¯†å·é•¿åº¦åœ¨0-6ä¹‹é—´").val("")
             }
         }else{
-            $("#number").attr("placeholder", "·¿¼äºÅ³¤¶ÈÔÚ0-12Ö®¼ä").val("")
+            $("#number").attr("placeholder", "æˆ¿é—´å·é•¿åº¦åœ¨0-12ä¹‹é—´").val("")
         }
     };
     function initText() {
-        $("#number").attr("placeholder", "·¿¼äºÅ")
+        $("#number").attr("placeholder", "æˆ¿é—´å·")
     }
 
     function initPassword() {
-        $("#password").attr("placeholder", "¼ÓÃÜºÅ")
+        $("#password").attr("placeholder", "åŠ å¯†å·")
     }
+
+
 
 </script>
 <script src="static/js/sheep.js"></script>
+<script src="static/js/left.js"></script>
 
 </html>

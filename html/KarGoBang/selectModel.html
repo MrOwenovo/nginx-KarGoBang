@@ -1,17 +1,24 @@
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <title>·¿¼ä×Ô¶¨Òå</title>
-    <meta charset="GBK">
+    <title>æˆ¿é—´è‡ªå®šä¹‰</title>
+    <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="static/css/selectModel.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/left.css">
+
     <link rel="shortcut icon" href="static/images/favicon.ico">
+    <link rel="stylesheet" href="static/css/input.css">
+    <link rel="stylesheet" href="static/css/checkBox.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/card.css">
 </head>
 
 <body>
-<h1>&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Remote connection</h1>
-<div class="wrapper">
+<h1 class="container-h1">&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Remote connection</h1>
+<div class="container-wrapper">
 
     <div class="container" id="c0">
         <div class="image" id="i0">
@@ -50,8 +57,8 @@
         </div>
         <a href="/createRoom.html" class="story" id="s0">
             <div class="info">
-                <h3>´´½¨·¿¼ä</h3>
-                <p> ´´½¨·¿¼ä£¬½«·¿¼äºÅ·ÖÏí¸øÆäËûÈË½øĞĞÁª»ú</p>
+                <h3 class="container-h3">åˆ›å»ºæˆ¿é—´</h3>
+                <p class="container-p"> åˆ›å»ºæˆ¿é—´ï¼Œå°†æˆ¿é—´å·åˆ†äº«ç»™å…¶ä»–äººè¿›è¡Œè”æœº</p>
             </div>
         </a>
     </div>
@@ -97,23 +104,108 @@
         </div>
         <a href="/addRoom.html"  class="story" id="s1">
             <div class="info">
-                <h3>¼ÓÈë·¿¼ä</h3>
-                <p> ÊäÈëºÃÓÑµÄ·¿¼äºÅ£¬½øÈëÆäËûÈËµÄ·¿¼ä</p>
+                <h3 class="container-h3">åŠ å…¥æˆ¿é—´</h3>
+                <p class="container-p"> è¾“å…¥å¥½å‹çš„æˆ¿é—´å·ï¼Œè¿›å…¥å…¶ä»–äººçš„æˆ¿é—´</p>
             </div>
         </a>
     </div>
 
 
     <div class="page">
-        <h4>&nbsp&nbsp&nbsp&nbspÔ¶³ÌÁª»ú</h4>
-        <ul><li> <<< </li>
+        <h4 class="container-h4">&nbsp&nbsp&nbsp&nbspè¿œç¨‹è”æœº</h4>
+        <ul><li class="container-li"> <<< </li>
 
-            <li> >>> </li>
+            <li class="container-li"> >>> </li>
         </ul>
     </div>
 
 </div>
 
-
+<div class="container-left">
+    <!-- --tæ˜¯è‡ªå®šä¹‰å±æ€§ï¼Œé€šè¿‡varå‡½æ•°å¯è°ƒç”¨ -->
+    <li class="li-left" style="--t:20%;">
+        <a class="a-left" href="javascript:window.location='/home.html'">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:30%;">
+        <a class="a-left" href="javascript:openUserDetails()">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:40%;">
+        <a class="a-left" href="javascript:window.location='/500page.html'">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:50%;">
+        <a class="a-left" href="javascript:window.location='/select.html'">
+            <i class="fa fa-gamepad" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:60%;">
+        <a class="a-left" href="https://github.com/MrOwenovo?tab=repositories">
+            <!--            <i class="fa fa-shopping-bag" aria-hidden="true"></i>-->
+            <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:70%;">
+        <a class="a-left" href="javascript:logout()">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </a>
+    </li>
+    <div class="top"></div>
+    <div class="middle"></div>
+    <div class="bottom"></div>
+</div>
+<div id="card-user" class="card-user">
+    <div class="imgBox">
+        <img class="img-user" src="static/images/girl.png" alt=""/>
+    </div>
+    <div class="content-user">
+        <div class="details-user">
+            <h2 id="card-name" class="h2-user">KarGoBang
+                <i id="card-sex" class="fa fa-venus i-user" aria-hidden="true"></i>
+                <!--                <i class="fa fa-mars i-user" aria-hidden="true"></i>-->
+                <br/>
+                <span id="card-message" class="span-user">ç‚¹å‡»ä¸‹æ–¹ç™»å½•</span></h2>
+            <div class="data">
+                <h3 id="card-data1" class="h3-user">
+                    0
+                    <br/>
+                    <span class="span-user">æ¸¸æˆå±€æ•°</span>
+                </h3>
+                <h3 id="card-data2" class="h3-user">
+                    0%
+                    <br/>
+                    <span class="span-user">æ¸¸æˆèƒœç‡</span>
+                </h3>
+                <h3 id="card-data3" class="h3-user">
+                    0
+                    <br/>
+                    <span class="span-user">ç†„ç¯å…³æ•°</span>
+                </h3>
+            </div>
+            <div class="actionBtn">
+                <button id="card-button1" class="button-user" type="button" onclick="window.location='/login.html'">
+                    ç™»å½•ç”¨æˆ·
+                </button>
+                <button id="card-button2" class="button-user" type="button" onclick="window.location='/register.html'">
+                    æ³¨å†Œç”¨æˆ·
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<script>
+    $(function () {
+        $(".h2-user").css("transform", "translateY(18px)");
+        $(".data").css("transform", "translateY(10px)");
+        $(".h2-user").css("font-size", "1.05em");
+        $(".span-user").css("font-size", "0.55em");
+    });
+</script>
+<script src="static/js/left.js"></script>
+
 </html>

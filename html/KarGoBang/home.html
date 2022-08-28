@@ -14,18 +14,13 @@
     <link rel="stylesheet" href="static/css/et-line-font.css">
     <link rel="stylesheet" href="static/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/left.css">
+    <link rel="shortcut icon" href="static/images/favicon.ico">
     <link rel="stylesheet" href="static/css/input.css">
     <link rel="stylesheet" href="static/css/checkBox.css">
-    <link rel="shortcut icon" href="static/images/favicon.ico">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/card.css">
 
 </head>
-<script>
-    $(function () {
-        $("#card-user").hide();
-    });
-</script>
 <body>
 <div id="card-user" class="card-user">
     <div class="imgBox">
@@ -110,7 +105,10 @@
     var sexFlag;
     var username;
     var message;
-
+    $(function () {
+        $(".card-user").css("visibility","visible");
+        $("#card-user").hide();
+    });
     function modifyInfo() {
         $(".content-user").html("<div class=\"content-user\">\n" +
             "        <div class=\"details-user\">\n" +
@@ -259,30 +257,6 @@
     });
     }
 
-    function multiMode() {
-        $.ajax({  //验证身份
-            type: "get",
-            url: '/api/auth/guest/isGuest',
-            async: true,
-            dataType: "json",
-            xhrFields: {
-                withCredentials: true,
-            },
-            success: function (data) {
-                if (data.code === 200) {
-                    window.location = "/selectModel.html";
-                } else if (data.code === 401) {
-                    window.location = "/login.html";
-                } else if (data.code !== 200) {
-                    window.alert(data.message);
-                }
-            },
-            error: function () {
-                window.location = "/500page.html";
-            },
-        });
-    }
-
     window.onload = getUserDetails();
 
     function getUserDetails() {
@@ -357,6 +331,31 @@
             },
         })
     }
+
+    function multiMode() {
+        $.ajax({  //验证身份
+            type: "get",
+            url: '/api/auth/guest/isGuest',
+            async: true,
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true,
+            },
+            success: function (data) {
+                if (data.code === 200) {
+                    window.location = "/selectModel.html";
+                } else if (data.code === 401) {
+                    window.location = "/login.html";
+                } else if (data.code !== 200) {
+                    window.alert(data.message);
+                }
+            },
+            error: function () {
+                window.location = "/500page.html";
+            },
+        });
+    }
+
 </script>
 <section id="about">
     <div class="container">

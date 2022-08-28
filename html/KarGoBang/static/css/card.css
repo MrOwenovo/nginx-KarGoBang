@@ -1,6 +1,6 @@
 
 .card-user {
-    /*visibility: hidden;*/
+    visibility: hidden;
     /* 垂直居中 */
     top: 30%;
     z-index: 100;

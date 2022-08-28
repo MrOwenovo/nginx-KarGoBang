@@ -19,7 +19,7 @@
     background-size: cover;
 }
 
-.card-user{
+.card-hall{
     /* 绝对定位 */
     position: absolute;
     background-color: #fff;
@@ -42,16 +42,16 @@
 
 }
 /* 鼠标移入,动画暂停 */
-.container-hall:hover .card-user{
+.container-hall:hover .card-hall{
     animation-play-state: paused;
 }
 
-.card-user .content-hall{
+.card-hall .content-hall{
     display: flex;
     align-items: center;
 }
 
-.card-user .img-hall{
+.card-hall .img-hall{
     width: 38px;
     height: 38px;
     position: absolute;
@@ -62,7 +62,7 @@
     border-radius: 50%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
-.card-user .img-hall img{
+.card-hall .img-hall .sub-img-hall{
     width: 100%;
     height: 100%;
     /* 对图片进行剪切,保留原始比例 */
@@ -70,12 +70,12 @@
     border-radius: 50%;
 }
 
-.card-user .detail{
+.card-hall .detail{
     margin-left: 40px;
 
 }
 
-.card-user .detail span{
+.card-hall .detail .span-hall{
     display: block;
     font-size: 3px;
     font-weight: bold;
@@ -83,7 +83,7 @@
     margin-top: 5px;
     /*margin-right: 20px;*/
 }
-.card-user .detail p{
+.card-hall .detail .p-hall{
     display: block;
     font-size: 1px;
     font-weight: 500;
@@ -92,7 +92,7 @@
 
 }
 
-.card-user a{
+.card-hall a{
     margin-left: 20px;
     font-size: 1px;
     text-decoration: none;

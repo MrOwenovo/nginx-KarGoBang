@@ -34,7 +34,7 @@ body{
     font-size: 26px;
     margin: 65px auto 70px auto;
 }
-.container input{
+.container .container-input{
     width: 280px;
     height: 30px;
     text-indent: 8px;
@@ -43,7 +43,7 @@ body{
     outline: none;
     margin: 12px auto;
 }
-.container button{
+.container .container-button{
     width: 280px;
     height: 40px;
     margin: 35px auto 40px auto;
@@ -57,18 +57,18 @@ body{
     /* 动画过渡 */
     transition: 0.5s;
 }
-.container button:hover{
+.container .container-button:hover{
     background: linear-gradient(-200deg,#aac2ee,#fac0e7);
     background-position-x: -280px;
 }
-.container span{
+.container .container-span{
     font-size: 14px;
 }
-.container a{
+.container .container-a{
     color: plum;
     text-decoration: none;
 }
-ul li{
+.container-ul .container-li{
     position: absolute;
     border: 1px solid #fff;
     background-color: #fff;
@@ -77,58 +77,58 @@ ul li{
     list-style: none;
     opacity: 0;
 }
-.square li{
+.square .container-li{
     top: 40vh;
     left: 60vw;
     /* 执行动画：动画名 时长 线性的 无限次播放 */
     animation: square 10s linear infinite;
 }
-.square li:nth-child(2){
+.square .container-li:nth-child(2){
     top: 80vh;
     left: 10vw;
     /* 设置动画延迟时间 */
     animation-delay: 2s;
 }
-.square li:nth-child(3){
+.square .container-li:nth-child(3){
     top: 80vh;
     left: 85vw;
     /* 设置动画延迟时间 */
     animation-delay: 4s;
 }
-.square li:nth-child(4){
+.square .container-li:nth-child(4){
     top: 10vh;
     left: 70vw;
     /* 设置动画延迟时间 */
     animation-delay: 6s;
 }
-.square li:nth-child(5){
+.square .container-li:nth-child(5){
     top: 10vh;
     left: 10vw;
     /* 设置动画延迟时间 */
     animation-delay: 8s;
 }
-.circle li{
+.circle .container-li{
     bottom: 0;
     left: 15vw;
     /* 执行动画 */
     animation: circle 10s linear infinite;
 }
-.circle li:nth-child(2){
+.circle .container-li:nth-child(2){
     left: 35vw;
     /* 设置动画延迟时间 */
     animation-delay: 2s;
 }
-.circle li:nth-child(3){
+.circle .container-li:nth-child(3){
     left: 55vw;
     /* 设置动画延迟时间 */
     animation-delay: 6s;
 }
-.circle li:nth-child(4){
+.circle .container-li:nth-child(4){
     left: 75vw;
     /* 设置动画延迟时间 */
     animation-delay: 4s;
 }
-.circle li:nth-child(5){
+.circle .container-li:nth-child(5){
     left: 90vw;
     /* 设置动画延迟时间 */
     animation-delay: 8s;
