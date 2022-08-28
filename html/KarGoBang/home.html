@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>KarGoBang - 三维四子棋</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="keywords" content="KarGoBang，三维四子棋，kagobang">
     <meta name="description" content="KarGoBang是一款支持AI,联机的三维四子棋游戏">
     <link rel="stylesheet" href="https://www.fcwqmc.cn/elsta/css/bootstrap.min.css">
@@ -13,9 +13,59 @@
     <link rel="stylesheet" href="https://www.fcwqmc.cn/elsta/css/style.css">
     <link rel="stylesheet" href="static/css/et-line-font.css">
     <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/left.css">
+    <link rel="stylesheet" href="static/css/input.css">
+    <link rel="stylesheet" href="static/css/checkBox.css">
     <link rel="shortcut icon" href="static/images/favicon.ico">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/card.css">
+
 </head>
+<script>
+    $(function () {
+        $("#card-user").hide();
+    });
+</script>
 <body>
+<div id="card-user" class="card-user">
+    <div class="imgBox">
+        <img class="img-user" src="static/images/girl.png" alt=""/>
+    </div>
+    <div class="content-user">
+        <div class="details-user">
+            <h2 id="card-name" class="h2-user">KarGoBang
+                <i id="card-sex" class="fa fa-venus i-user" aria-hidden="true"></i>
+                <!--                <i class="fa fa-mars i-user" aria-hidden="true"></i>-->
+                <br/>
+                <span id="card-message" class="span-user">点击下方登录</span></h2>
+            <div class="data">
+                <h3 id="card-data1" class="h3-user">
+                    0
+                    <br/>
+                    <span class="span-user">游戏局数</span>
+                </h3>
+                <h3 id="card-data2" class="h3-user">
+                    0%
+                    <br/>
+                    <span class="span-user">游戏胜率</span>
+                </h3>
+                <h3 id="card-data3" class="h3-user">
+                    0
+                    <br/>
+                    <span class="span-user">熄灯关数</span>
+                </h3>
+            </div>
+            <div class="actionBtn">
+                <button id="card-button1" class="button-user" type="button" onclick="window.location='/login.html'">
+                    登录用户
+                </button>
+                <button id="card-button2" class="button-user" type="button" onclick="window.location='/register.html'">
+                    注册用户
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <section class="preloader">
     <div class="sk-circle">
         <div class="sk-circle1 sk-child"></div>
@@ -41,18 +91,273 @@
                     <h3 data-wow-delay="0.4s">
                         <span class="text"></span>
                     </h3>
+
                     <h3 class="wow fadeInUp" data-wow-delay="0.6s">一款别样的 <strong style="color: #eb6877;">AI对战</strong>
                         <strong style="color: #eb6877;">更多维度</strong> <strong style="color: #eb6877;">极简设计</strong>
                         <strong style="color: #eb6877;">线上联机</strong>的智能空间四子棋</h3>
                     <a href="select.html" target="_blank"
                        class="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs" data-wow-delay="0.8s">本机模式</a>
-                    <a href="selectModel.html" target="_blank" class="btn btn-lg btn-success smoothScroll wow fadeInUp"
+                    <a href="javascript:multiMode()" class="btn btn-lg btn-success smoothScroll wow fadeInUp"
                        data-wow-delay="1.0s">联机模式</a>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
+<script>
+    var sex;
+    var sexFlag;
+    var username;
+    var message;
+
+    function modifyInfo() {
+        $(".content-user").html("<div class=\"content-user\">\n" +
+            "        <div class=\"details-user\">\n" +
+            "<div class=\"wrapper\">\n" +
+            "        <div class=\"input-data\">\n" +
+            "            <input class=\"wrapper-input\" type=\"text\" required>\n" +
+            "            <div class=\"underline\"></div>\n" +
+            "            <label class=\"wrapper-label\">您的姓名</label>\n" +
+            "        </div>\n" +
+            "    </div>" +
+            "<div class=\"wrapper-2\">\n" +
+            "        <div class=\"input-data-2\">\n" +
+            "            <input class=\"wrapper-input-2\" type=\"text\" required>\n" +
+            "            <div class=\"underline-2\"></div>\n" +
+            "            <label class=\"wrapper-label-2\">您的简介</label>\n" +
+            "        </div>\n" +
+            "    </div>" +
+            "<div class=\"checkbox\">\n" +
+            "        <input class='checkbox-input' type=\"checkbox\" name=\"\" id=\"good\" />\n" +
+            "        <label class='checkbox-label' for=\"good\"><div class=\"ball\"></div></label>\n" +
+            "        <span id='checkbox-sex'>女</span>\n" +
+            "      </div>" +
+            "            <div class=\"data\">\n" +
+            "                <h3 id=\"card-data1\" class=\"h3-user\">\n" +
+            "                    0\n" +
+            "                    <br />\n" +
+            "                    <span class=\"span-user\">游戏局数</span>\n" +
+            "                </h3>\n" +
+            "                <h3 id=\"card-data2\" class=\"h3-user\">\n" +
+            "                    0%\n" +
+            "                    <br />\n" +
+            "                    <span class=\"span-user\">游戏胜率</span>\n" +
+            "                </h3>\n" +
+            "                <h3 id=\"card-data3\" class=\"h3-user\">\n" +
+            "                    0\n" +
+            "                    <br />\n" +
+            "                    <span class=\"span-user\">熄灯关数</span>\n" +
+            "                </h3>\n" +
+            "            </div>\n" +
+            "            <div class=\"actionBtn\">\n" +
+            "                <button id=\"card-button1\" class=\"button-user\" type=\"button\" onclick=\"saveInfo()\">保存信息</button>\n" +
+            "                <button id=\"card-button2\" class=\"button-user\" type=\"button\" onclick=\"getUserDetails()\">取消修改</button>\n" +
+            "            </div>\n" +
+            "        </div>\n" +
+            "    </div>")
+        //按钮操作
+        let flag = sex;
+        if (sex === "男") {
+            $(".checkbox-label").css("background-color", "#277de3");
+            $("#checkbox-sex").text("男");
+        } else {
+            $(".checkbox-label").css("background-color", "#e5275a")
+        }
+        $(".checkbox-input").click(function () {
+            if (flag === "男") {
+                $(".checkbox-label").css("background-color", "#e5275a")
+                $("#checkbox-sex").text("女");
+                flag = "女";
+            } else {
+                $(".checkbox-label").css("background-color", "#277de3");
+                $("#checkbox-sex").text("男");
+                flag = "男";
+            }
+        });
+
+        //输入框操作
+        $("#card-message").css("transform", "translateY(-15px)");
+        $(".wrapper-input").click(function () {
+            $(".wrapper-input").val(username);
+        });
+        $(".wrapper-input-2").click(function () {
+            $(".wrapper-input-2").val(message);
+        });
+        $(".data").click(function () {
+            $(".wrapper-input").val("");
+            $(".wrapper-input-2").val("");
+        });
+        $(".img-user").click(function () {
+            $(".wrapper-input").val("");
+            $(".wrapper-input-2").val("");
+        });
+
+    }
+
+    function saveInfo() {
+        let inputName = $(".wrapper-input").val();
+        let inputMessage = $(".wrapper-input-2").val();
+        let inputSex = $("#checkbox-sex").text();
+        if (username === inputName && message === inputMessage && sex === inputSex) return;
+        let formatData = {};
+        if (username !== inputName) {
+            formatData['username'] = inputName;
+        }
+        if (message !== inputMessage) {
+            formatData['message'] = inputMessage;
+        }
+        if (sex !== inputSex) {
+            formatData['sex'] = inputMessage;
+        }
+        if (username !== inputName && message !== inputMessage && sex !== inputSex) {
+            $.ajax({
+                type: "put",
+                url: '/api/user/modifyUserDetails',
+                async: false,
+                data: formatData,
+                dataType: "json",
+                xhrFields: {
+                    withCredentials: true,
+                },
+                success: function (data) {
+                    if (data.code === 200) {
+                        getUserDetails();
+                    } else if (data.code === 401) {
+                        window.location = "/login.html";
+                    } else if (data.code !== 200) {
+                        window.alert(data.message);
+                    }
+                },
+                error: function () {
+                    window.location = "/500page.html";
+                },
+            });
+            return;
+        }
+    $.ajax({
+        type: "patch",
+        url: '/api/user/modifySomeUserDetails',
+        async: true,
+        data: formatData,
+        dataType: "json",
+        xhrFields: {
+            withCredentials: true,
+        },
+        success: function (data) {
+            if (data.code === 200) {
+                getUserDetails();
+            } else if (data.code === 401) {
+                window.location = "/login.html";
+            } else if (data.code !== 200) {
+                window.alert(data.message);
+            }
+        },
+        error: function () {
+            window.location = "/500page.html";
+        },
+    });
+    }
+
+    function multiMode() {
+        $.ajax({  //验证身份
+            type: "get",
+            url: '/api/auth/guest/isGuest',
+            async: true,
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true,
+            },
+            success: function (data) {
+                if (data.code === 200) {
+                    window.location = "/selectModel.html";
+                } else if (data.code === 401) {
+                    window.location = "/login.html";
+                } else if (data.code !== 200) {
+                    window.alert(data.message);
+                }
+            },
+            error: function () {
+                window.location = "/500page.html";
+            },
+        });
+    }
+
+    window.onload = getUserDetails();
+
+    function getUserDetails() {
+        $.ajax({
+            type: 'get',
+            url: '/api/user/getUserDetails',
+            async: false,
+            data: {},
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: true,
+            },
+            success: function (data) {
+                if (data.code === 200) {
+                    username = data.data.username;
+                    message = data.data.userInfo.message;
+                    if (data.data.userInfo.sex === "男") {
+                        sexFlag = "fa fa-mars i-user";
+                    } else {
+                        sexFlag = "fa fa-venus i-user";
+                    }
+                    $(".content-user").html("<div class=\"content-user\">\n" +
+                        "        <div class=\"details-user\">\n" +
+                        "            <h2 id=\"card-name\" class=\"h2-user\">" + data.data.username + "\n" +
+                        "                <i id=\"card-sex\" class=\"" + sexFlag + "\" aria-hidden=\"true\"></i>\n" +
+                        "                <br />\n" +
+                        "                <span id=\"card-message\" class=\"span-user\">点击下方登录</span></h2>\n" +
+                        "            <div class=\"data\">\n" +
+                        "                <h3 id=\"card-data1\" class=\"h3-user\">\n" +
+                        "                    0\n" +
+                        "                    <br />\n" +
+                        "                    <span class=\"span-user\">游戏局数</span>\n" +
+                        "                </h3>\n" +
+                        "                <h3 id=\"card-data2\" class=\"h3-user\">\n" +
+                        "                    0%\n" +
+                        "                    <br />\n" +
+                        "                    <span class=\"span-user\">游戏胜率</span>\n" +
+                        "                </h3>\n" +
+                        "                <h3 id=\"card-data3\" class=\"h3-user\">\n" +
+                        "                    0\n" +
+                        "                    <br />\n" +
+                        "                    <span class=\"span-user\">熄灯关数</span>\n" +
+                        "                </h3>\n" +
+                        "            </div>\n" +
+                        "            <div class=\"actionBtn\">\n" +
+                        "                <button id=\"card-button1\" class=\"button-user\" type=\"button\" onclick=\"window.location='/login.html'\">登录用户</button>\n" +
+                        "                <button id=\"card-button2\" class=\"button-user\" type=\"button\" onclick=\"window.location='/register.html'\">注册用户</button>\n" +
+                        "            </div>\n" +
+                        "        </div>\n" +
+                        "    </div>")
+                    sex = data.data.userInfo.sex;
+                    if (data.data.userInfo.sex === "男") {
+                        $("#card-sex").css("color", "#0679a2");
+                        $(".img-user").attr("src", "static/images/boy.png");
+                    }
+                    $("#card-button1").attr("onClick", "modifyInfo()")
+                    $("#card-message").text(data.data.userInfo.message);
+                    $("#card-data1").html(data.data.userScore.wins + "<br />\n" +
+                        "                    <span class=\"span-user\">游戏局数</span>");
+                    $("#card-data2").html(data.data.userScore.winRate + '%' + "<br />\n" +
+                        "                    <span class=\"span-user\">游戏胜率</span>");
+                    $("#card-data3").html(data.data.userScore.passNumber + "<br />\n" +
+                        "                    <span class=\"span-user\">熄灯关数</span>");
+                    $("#card-button1").text("修改信息");
+                    $("#card-button2").text("修改头像");
+
+                } else if (data.code === 401) {
+                    //未登录
+                } else if (data.code !== 200) {
+                    //未登录
+                }
+            },
+        })
+    }
+</script>
 <section id="about">
     <div class="container">
         <div class="row">
@@ -301,6 +606,44 @@
       </div>
   </div-->
 </div>
+<div class="container-left">
+    <!-- --t是自定义属性，通过var函数可调用 -->
+    <li class="li-left" style="--t:20%;">
+        <a class="a-left" href="javascript:window.location='/home.html'">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:30%;">
+        <a class="a-left" href="javascript:openUserDetails()">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:40%;">
+        <a class="a-left" href="javascript:window.location='/500page.html'">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:50%;">
+        <a class="a-left" href="javascript:window.location='/select.html'">
+            <i class="fa fa-gamepad" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:60%;">
+        <a class="a-left" href="https://github.com/MrOwenovo?tab=repositories">
+            <!--            <i class="fa fa-shopping-bag" aria-hidden="true"></i>-->
+            <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+    </li>
+    <li class="li-left" style="--t:70%;">
+        <a class="a-left" href="javascript:logout()">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </a>
+    </li>
+    <div class="top"></div>
+    <div class="middle"></div>
+    <div class="bottom"></div>
+</div>
+
 <a href="#back-top" class="go-top"><i class="fa fa-angle-up"></i></a>
 <script src="https://www.fcwqmc.cn/elsta/js/jquery.js"></script>
 <script src="https://www.fcwqmc.cn/elsta/js/bootstrap.min.js"></script>
@@ -314,6 +657,7 @@
         border-top: 2px solid #eb6877;
     }
 </style>
+
 <style>
     .text {
         /*font-family: 'fangsong';*/
@@ -349,73 +693,86 @@
 </style>
 </body>
 <script>
-    <!-- 获取.text标签 -->
+
     const text = document.querySelector('.text');
     <!-- 定义数组，里面放上文本 -->
-    const txt  =["三维四子棋","KarGoBang"];
+    const txt = ["三维四子棋", "KarGoBang"];
     <!-- 定义当前要显示的字符串的第几个字符 -->
-    var index=0;
+    var index = 0;
     <!-- 定义文本数组的下标 -->
-    var xiaBiao= 0;
+    var xiaBiao = 0;
     <!-- 定义huan，拿来判断是要实现打字还是删除字效果，初始为真 -->
     var huan = true;
     <!-- 定义一个定时器，200毫秒执行一次 -->
-    setInterval(function(){
+    setInterval(function () {
         <!-- huan为真 -->
-        if(huan){
+        if (huan) {
             <!-- 给.text标签添加字符，用.slice方法 -->
-            text.innerHTML = txt[xiaBiao].slice(0,++index);
-        }
-        else{
+            text.innerHTML = txt[xiaBiao].slice(0, ++index);
+        } else {
             <!-- 给.text标签删除字符，用.slice方法 -->
-            text.innerHTML = txt[xiaBiao].slice(0,index--);
+            text.innerHTML = txt[xiaBiao].slice(0, index--);
         }
 
         <!-- 判断当前index是否为当前字符串长度了+3了 ，+3是为了打完后多等会，多走3个啥也不做的轮回-->
-        if(index==txt[xiaBiao].length+3)
-        {
+        if (index == txt[xiaBiao].length + 3) {
             <!-- huan变为假，开始执行删除文字效果 -->
             huan = false;
         }
         <!-- 如果删完了 -->
-        else if(index<0)
-        {
+        else if (index < 0) {
             <!-- index=0，huan为真，从头开始打字 -->
             index = 0;
             huan = true;
             <!-- 数组下标加1 -->
             xiaBiao++;
-            if(xiaBiao>=txt.length)
-            {
+            if (xiaBiao >= txt.length) {
                 <!-- 如果数组下标超过了，又回到0 -->
-                xiaBiao=0;
+                xiaBiao = 0;
             }
         }
 
-    },200)
+    }, 200)
 
-    function guestLogin() {
+    var UserDetailsOpenType = false;
+
+    function openUserDetails() {
+
+        if (UserDetailsOpenType) {
+            let obj = document.getElementById('card-user');
+            $("#card-user").fadeOut(500);
+            // obj.style.visibility="hidden";
+        } else {
+            let obj = document.getElementById('card-user');
+            // obj.style.visibility="visible";
+            $("#card-user").fadeIn(500);
+        }
+        UserDetailsOpenType = !UserDetailsOpenType;
+    }
+
+    function logout() {
         $.ajax({
-            type:'get',
-            url:'/api/guest/login',
-            async:true,
-            dataType:'json',
-            xhrFields:{
-                withCredentials : true,
+            type: 'get',
+            url: '/api/auth/logout',
+            async: true,
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: true,
             },
             success: function (data) {
                 if (data.code === 200) {
-                    window.location= "select.html";
+                    window.location = "/home.html";
                 } else {
                     window.alert(data.message)
                 }
             },
             error: function (data) {
-                alert("服务器未连接!")
+                window.location = "/500page.html";
             },
         })
     }
 
 </script>
+
 
 </html>

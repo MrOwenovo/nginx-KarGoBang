@@ -8,28 +8,7 @@
     <link href="static/css/selectModel.css" rel="stylesheet">
     <link rel="shortcut icon" href="static/images/favicon.ico">
 </head>
-<script>
-    $.ajax({
-        type: "get",
-        url: '/api/auth/guest/isGuest',
-        async: true,
-        dataType:"json",
-        xhrFields:{
-            withCredentials: true,
-        },
-        success: function (data) {
-            if (data.code == 401) {
-                window.location = "/login.html";
-                window.alert("您当前为游客身份，请前往登录或注册!")
-            }
-        },
-        error: function (data) {
-            alert("服务器未连接!")
-        },
 
-
-    });
-</script>
 <body>
 <h1>&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Remote connection</h1>
 <div class="wrapper">

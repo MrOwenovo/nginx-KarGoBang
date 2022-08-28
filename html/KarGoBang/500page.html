@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="shortcut icon" href="static/images/favicon.ico">
+        <title>页面错误</title>
+    </head>
+    <body>
+        <!--==================== HEADER ====================-->
+        <header class="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">
+                    KarGoBang
+                </a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="/home.html" class="nav__link">首页</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/login.html" class="nav__link">登录</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="https://github.com/MrOwenovo?tab=repositories" class="nav__link">联系</a>
+                        </li>
+                    </ul>
+
+                    <div class="nav__close" id="nav-close">
+                        <i class='bx bx-x'></i>
+                    </div>
+                </div>
+
+                <!-- Toggle button -->
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-grid-alt'></i>
+                </div>
+            </nav>
+        </header>
+
+        <!--==================== MAIN ====================-->
+        <main class="main">
+            <!--==================== HOME ====================-->
+            <section class="home">
+                <div class="home__container container">
+                    <div class="home__data">
+                        <span class="home__subtitle">Error 500</span>
+                        <h1 class="home__title">服务器未响应</h1>
+                        <p class="home__description">
+                            您要寻找的页面不存在<br> 请稍后再试或联系管理员
+                        </p>
+                        <a href="javascript:window.location='/home.html'" class="home__button">
+                            返回首页
+                        </a>
+                    </div>
+
+                    <div class="home__img">
+                        <img src="static/images/ghost-img.png" alt="">
+                        <div class="home__shadow"></div>
+                    </div>
+                </div>
+
+                <footer class="home__footer">
+                    <a href="https://github.com/MrOwenovo?tab=repositories">
+                    <span>MrOwenovo</span>
+                    <span>|</span>
+                    <span>share@github.com</span>
+                </a>
+                </footer>
+            </section>
+        </main>
+
+        <!--=============== SCROLLREVEAL ===============-->
+        <script src="static/js/scrollreveal.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="static/js/main.js"></script>
+    </body>
+</html>

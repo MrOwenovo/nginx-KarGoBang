@@ -63,20 +63,45 @@
             },
             success: function (data) {
                 if (data.code === 200) {
-                    window.location = "/selectModel.html";
+                    //立刻登录
+                    $.ajax({
+                        type: "post",
+                        url: '/api/auth/login',
+                        async: true,
+                        data:{
+                            'username':username,
+                            'password': password,
+                        },
+                        dataType:"json",
+                        xhrFields:{
+                            withCredentials: true,
+                        },
+                        success: function (data) {
+                            if (data.code === 200) {
+                                window.location = "/selectModel.html";
+                            } else {
+                                window.location = "/register.html";
+                                window.alert(data.message)
+                            }
+                        },
+                        error: function (data) {
+                            window.location = "/500page.html";
+
+                        },
+                    });
                 } else {
+                    window.location = "/register.html";
                     window.alert(data.message)
                 }
             },
             error: function (data) {
-                alert("服务器未连接!")
+                window.location = "/500page.html";
             },
 
         });
     }
     function verify() {
         var email = $('#email').val();
-        console.log(email)
         if (email === "") {
             window.alert("邮箱不能为空!");
             return false;
@@ -101,12 +126,13 @@
             success: function (data) {
                 if (data.code === 200) {
                     window.alert("发送验证码成功!");
+
                 } else {
                     window.alert(data.message)
                 }
             },
-            error: function (data) {
-                alert("服务器未连接!")
+            error: function () {
+                window.location="/500page.html"
             },
 
         });
@@ -117,12 +143,7 @@
         var myemail = myforms[0].email.value;
         var myReg = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
 
-        if (myReg.test(myemail)) {
-            return true;
-        } else {
-            myspan.innerText = "邮箱格式不对!";
-            return false;
-        }
+        return myReg.test(myemail);
     }
 
 

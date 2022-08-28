@@ -9,6 +9,7 @@
 
     <title>等待他人加入</title>
     <link rel="stylesheet" href="static/css/room.css">
+    <link rel="stylesheet" href="static/css/sheep.css">
     <link rel="shortcut icon" href="static/images/favicon.ico">
 
 </head>
@@ -37,6 +38,8 @@
         <li></li>
     </ul>
 </div>
+<div class="img"></div>
+
 </body>
 <script>
     window.onload = init();
@@ -56,14 +59,18 @@
                 success: function (data) {
                     if (data.code === 200) {
                         window.location.href = "http://localhost:8668/applications/KarGoBang-%E5%85%88%E6%89%8B%20-%20dev/loading.html";
-                    } else {
-
+                    } else if (data.code === 401) {
+                        window.location = "/login.html";
+                    }else {
+                        //没有接收到
                     }
                 },
                 error: function (data) {
-                    alert("服务器未连接!")
+                    window.location = "/500page.html";
                 },
         })
     }
 </script>
+<script src="static/js/sheep.js"></script>
+
 </html>

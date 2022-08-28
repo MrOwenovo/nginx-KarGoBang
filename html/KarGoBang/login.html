@@ -9,12 +9,16 @@
     <link rel="shortcut icon" href="static/images/favicon.ico">
     <title>登录...</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+
 </head>
 <body style="'background:url('+'../static/images/wallpaper.jpg'+') no-repeat;background-size: cover;background-attachment: fixed;'">
+<div id="loading" class="loader"></div>
 <form class="login" method="post" id="login_form">
     <p>Login</p>
     <input type="text" placeholder="用户名" name="username">
     <input type="password" placeholder="密码" name="password">
+
+
     <input type="button"  onclick="login()" id="login_submit" class="btn" value="登  录">
     <input type="button"  id="register" class="btn" value="前往注册"  onclick="location.href='/register.html' ">
 
@@ -31,6 +35,7 @@
         $.each(formArray,function(i,item){
             formObject[item.name] = item.value;
         });
+
         $.ajax({
             type: "post",
             url: '/api/auth/login',
@@ -44,11 +49,12 @@
                 if (data.code === 200) {
                     window.location = "/selectModel.html";
                 } else {
+                    window.location = "/login.html";
                     window.alert(data.message)
                 }
             },
-            error: function (data) {
-                alert("服务器未连接!")
+            error: function () {
+                window.location = "/500page.html";
             },
         });
     }
