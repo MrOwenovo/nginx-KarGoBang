@@ -91,7 +91,7 @@
                         <strong style="color: #eb6877;">更多维度</strong> <strong style="color: #eb6877;">极简设计</strong>
                         <strong style="color: #eb6877;">线上联机</strong>的智能空间四子棋</h3>
                     <a href="select.html" target="_blank"
-                       class="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs" data-wow-delay="0.8s">本机模式</a>
+                       class="btn btn-lg btn-default smoothScroll wow fadeInUp" data-wow-delay="0.8s">本机模式</a>
                     <a href="javascript:multiMode()" class="btn btn-lg btn-success smoothScroll wow fadeInUp"
                        data-wow-delay="1.0s">联机模式</a>
 
@@ -409,7 +409,7 @@
         $.ajax({  //验证身份
             type: "get",
             url: '/api/auth/guest/isGuest',
-            async: true,
+            async: false,
             dataType: "json",
             xhrFields: {
                 withCredentials: true,
@@ -424,7 +424,16 @@
                 }
             },
             error: function () {
-                window.location = "/500page.html";
+                //获取浏览器navigator对象的userAgent属性（浏览器用于HTTP请求的用户代理头的值）
+                var info = navigator.userAgent;
+                //通过正则表达式的test方法判断是否包含“Mobile”字符串
+                var isPhone = /mobile/i.test(info);
+                //如果包含“Mobile”（是手机设备）则返回true
+                if (isPhone) {
+                    window.location="/login.html"
+                }else {
+                    window.location = "/500page.html";
+                }
             },
         });
     }
@@ -437,7 +446,7 @@
             <div class="col-md-6 col-sm-12">
                 <img class="img-responsive wow fadeInUp" alt="About"
                      src="https://img.alicdn.com/imgextra/i4/1048138670/O1CN01zRPmsQ2DuuaI2Nqnt_!!1048138670.gif"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
 
             <div class="col-md-6 col-sm-12">
@@ -462,86 +471,86 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img  class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i1/1048138670/O1CN01EWQNB72DuuaNIMPdX_!!1048138670.jpg"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01YM10NL2DuuaOtuHkj_!!1048138670.jpg"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i2/1048138670/O1CN01zDg6kJ2DuuaFMfasP_!!1048138670.jpg"
-                     style="max-width: 550.0px;margin-top: 160px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;margin-top: 160px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block"  alt="About"
                      src="https://img.alicdn.com/imgextra/i2/1048138670/O1CN01ADRL9H2Duua9FKGki_!!1048138670.jpg"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01Yxynjw2DuuaFMdz5l_!!1048138670.jpg"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01RPJqtL2Duua9FMkXa_!!1048138670.jpg"
-                     style="max-width: 550.0px;margin-top: 100px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;margin-top: 100px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i2/1048138670/O1CN01m3CQD52DuuaFx3FEc_!!1048138670.jpg"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01XZH3r82DuuaKoH72Y_!!1048138670.jpg"
-                     style="max-width: 550.0px;margin-top: 170px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;margin-top: 170px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01SHemXu2DuuaJO1muB_!!1048138670.jpg"
-                     style="max-width: 550.0px;margin-top: 100px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;margin-top: 100px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i1/1048138670/O1CN018VQ54U2DuuaLmeWyz_!!1048138670.gif"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i1/1048138670/O1CN018LfKy62DuuaMFOTy0_!!1048138670.jpg"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN015epcaV2DuuaJewlcL_!!1048138670.jpg"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp"
+                <img class="img-responsive wow fadeInUp img-responsive center-block"
                      src=""
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
             <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp" alt="About"
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i4/1048138670/O1CN01leITnp2DuuaLmjtjO_!!1048138670.jpg"
-                     style="max-width: 550.0px;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
         </div>
     </div>
