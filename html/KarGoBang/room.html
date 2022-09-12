@@ -48,33 +48,33 @@
 <div class="container-left">
     <!-- --t是自定义属性，通过var函数可调用 -->
     <li class="li-left" style="--t:20%;">
-        <a class="a-left" href="javascript:window.location='/home.html'">
+        <a class="a-left" ondblclick="window.location='/home.html'">
             <i class="fa fa-home" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:30%;">
-        <a class="a-left" href="javascript:openUserDetails()">
+        <a class="a-left" ondblclick="openUserDetails()">
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:40%;">
-        <a class="a-left" href="javascript:window.location='/500page.html'">
+        <a class="a-left" ondblclick="window.location='/500page.html'">
             <i class="fa fa-comment" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:50%;">
-        <a class="a-left" href="javascript:window.location='/select.html'">
+        <a class="a-left" ondblclick="window.location='/select.html'">
             <i class="fa fa-gamepad" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:60%;">
-        <a class="a-left" href="https://github.com/MrOwenovo?tab=repositories">
+        <a class="a-left" ondblclick="window.location.href='https://github.com/MrOwenovo?tab=repositories'">
             <!--            <i class="fa fa-shopping-bag" aria-hidden="true"></i>-->
             <i class="fa fa-github" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:70%;">
-        <a class="a-left" href="javascript:logout()">
+        <a class="a-left" ondblclick="logout()">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
         </a>
     </li>
@@ -125,6 +125,7 @@
 
 </body>
 <script>
+
     window.onload = init();
 
     function init() {
@@ -141,7 +142,16 @@
                 },
                 success: function (data) {
                     if (data.code === 200) {
-                        window.location.href = "http://localhost:8668/applications/KarGoBang-%E5%85%88%E6%89%8B%20-%20dev/loading.html";
+						//获取浏览器navigator对象的userAgent属性（浏览器用于HTTP请求的用户代理头的值）
+						var info = navigator.userAgent;
+						//通过正则表达式的test方法判断是否包含“Mobile”字符串
+						var isPhone = /mobile/i.test(info);
+						//如果包含“Mobile”（是手机设备）则返回true
+						if (isPhone) {
+							window.location.href='https://f01-1309918226.file.myqcloud.com/42/2022/09/12/%E5%85%88%E6%89%8Bph-1/loading.html?x-cos-traffic-limit=819200';
+						}else {
+							window.location.href='https://f01-1309918226.file.myqcloud.com/91/2022/09/12/%E5%85%88%E6%89%8B23/loading.html?x-cos-traffic-limit=819200';
+						}
                     } else if (data.code === 401) {
                         window.location = "/login.html";
                     }else {

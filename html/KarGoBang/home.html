@@ -19,9 +19,78 @@
     <link rel="stylesheet" href="static/css/checkBox.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/card.css">
+    <link rel="stylesheet" href="static/css/email.css">
 
 </head>
+<script>
+    $(function () {
+        setTimeout("sendMyWord()", 1500);
+    });
+    function sendMyWord() {
+        $.ajax({  //验证身份
+            type: "get",
+            url: '/api/auth/guest/isGuest',
+            async: false,
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true,
+            },
+            success: function (data) {
+                if (data.code === 200) {
+
+                } else if (data.code === 401) {
+                    $(".email-get-no").html("<div class=\"email-get\">" +
+                        "<a class=\"close\" href=\"javascript:closeGet()\">X</a>\n" +
+                        "    <h1 class=\"email-h1\">你好, Welcome.</h1>\n" +
+                        "    <h1 class=\"email-h1\">这是最新的更新消息</h1>\n" +
+                        "    <img class=\"email-img\" src=\"static/images/email.svg\" alt=\"\">\n" +
+                        "      <p class=\"email-p\" style='transform: translateY(-20px)'>" +
+						" 祝大家中秋节快乐！！<br>"+
+                        "·修复了手机误触问题<br>" +
+                        "·再次优化AI逻辑<br>" +
+                        "·修复了AI有一个方向计算错误导致在棋盘外围下子的bug<br>" +
+                        "·下一步会加禁手，继续优化ai，修复一下联机出现的一些小毛病，解决一下模型的过曝<br>" +
+						"(仅未登录用户展示)<br>"+
+                        "</p>\n  "+
+                        // "    <button class=\"email-button\" onclick=\"closeGet();openSendMessageWindow()\">回信</button>\n" +
+                        "</div>")
+                    $(".email-p").text(message);
+                } else if (data.code !== 200) {
+
+                }
+            },
+            error: function () {
+                //获取浏览器navigator对象的userAgent属性（浏览器用于HTTP请求的用户代理头的值）
+                var info = navigator.userAgent;
+                //通过正则表达式的test方法判断是否包含“Mobile”字符串
+                var isPhone = /mobile/i.test(info);
+                //如果包含“Mobile”（是手机设备）则返回true
+                 $(".email-get-no").html("<div class=\"email-get\">" +
+                        "<a class=\"close\" href=\"javascript:closeGet()\">X</a>\n" +
+                        "    <h1 class=\"email-h1\">你好, Welcome.</h1>\n" +
+                        "    <h1 class=\"email-h1\">这是最新的更新消息</h1>\n" +
+                        "    <img class=\"email-img\" src=\"static/images/email.svg\" alt=\"\">\n" +
+                        "      <p class=\"email-p\" style='transform: translateY(-20px)'>" +
+						" 祝大家中秋节快乐！！<br>"+
+                        "·修复了手机误触问题<br>" +
+                        "·再次优化AI逻辑<br>" +
+                        "·修复了AI有一个方向计算错误导致在棋盘外围下子的bug<br>" +
+                        "·下一步会加禁手，继续优化ai，修复一下联机出现的一些小毛病，解决一下模型的过曝<br>" +
+						"(仅未登录用户展示)<br>"+
+                        "</p>\n  "+
+                        // "    <button class=\"email-button\" onclick=\"closeGet();openSendMessageWindow()\">回信</button>\n" +
+                        "</div>")
+                    $(".email-p").text(message);
+            },
+        });
+    }
+    function closeGet() {
+        $(".email-get").fadeOut(500);
+    }
+</script>
 <body>
+<div class="email-get-no"></div>
+
 <div id="card-user" class="card-user">
     <div class="imgBox">
         <img class="img-user" src="static/images/girl.png" alt=""/>
@@ -120,7 +189,7 @@
         var file;
         $("#_ef").click().on('change',async event => {
             file = event.target.files[0];
-            let src = window.URL.createObjectURL(file)
+            // let src = window.URL.createObjectURL(file)
             // $(".img-user").attr("src", src);
             upload(file);
 
@@ -142,7 +211,6 @@
             var reader = new FileReader()
             reader.readAsDataURL(file)
             reader.onload = () => {
-                window.alert(reader.result);
                 $.ajax({
                     type: "post",
                     url: '/api/user/uploadIcon',
@@ -156,7 +224,6 @@
                     },
                     success: function (data) {
                         if (data.code === 200) {
-                            window.alert("修改成功!");
                             $(".img-user").attr("src", reader.result);
 
                         } else {
@@ -260,18 +327,26 @@
         let inputName = $(".wrapper-input").val();
         let inputMessage = $(".wrapper-input-2").val();
         let inputSex = $("#checkbox-sex").text();
-        if (username === inputName && message === inputMessage && sex === inputSex) return;
+        if (username === inputName && message === inputMessage && sex === inputSex) {
+            window.alert("跟原用户信息无变化!");
+            return;
+        }
         let formatData = {};
-        if (username !== inputName) {
+        if (inputName === "" && inputMessage === ""&&sex === inputSex) {
+            window.alert("内容不能为空!");
+            return;
+
+        }
+        if (username !== inputName && inputName !== ""&& inputName !== null) {
             formatData['username'] = inputName;
         }
-        if (message !== inputMessage) {
+        if (message !== inputMessage && inputMessage !== ""&& inputMessage !== null) {
             formatData['message'] = inputMessage;
         }
         if (sex !== inputSex) {
-            formatData['sex'] = inputMessage;
+            formatData['sex'] = inputSex;
         }
-        if (username !== inputName && message !== inputMessage && sex !== inputSex) {
+        if (username !== inputName && message !== inputMessage && sex !== inputSex&&inputName !==""&&inputMessage!==""&& inputSex !== "") {
             $.ajax({
                 type: "put",
                 url: '/api/user/modifyUserDetails',
@@ -283,7 +358,13 @@
                 },
                 success: function (data) {
                     if (data.code === 200) {
-                        getUserDetails();
+                        if (username !== inputName&&inputName!==""&&inputName!==null) {
+                            logout();
+                            window.location = '/login.html';
+                            return;
+                        }
+                        $.ajaxSetup ({cache:false});
+                        getUserDetailsNoCache();
                     } else if (data.code === 401) {
                         window.location = "/login.html";
                     } else if (data.code !== 200) {
@@ -296,32 +377,125 @@
             });
             return;
         }
-    $.ajax({
-        type: "patch",
-        url: '/api/user/modifySomeUserDetails',
-        async: true,
-        data: formatData,
-        dataType: "json",
-        xhrFields: {
-            withCredentials: true,
-        },
-        success: function (data) {
-            if (data.code === 200) {
-                getUserDetails();
-            } else if (data.code === 401) {
-                window.location = "/login.html";
-            } else if (data.code !== 200) {
-                window.alert(data.message);
-            }
-        },
-        error: function () {
-            window.location = "/500page.html";
-        },
-    });
+        $.ajax({
+            type: "patch",
+            url: '/api/user/modifySomeUserDetails',
+            async: true,
+            data: formatData,
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true,
+            },
+            success: function (data) {
+                if (data.code === 200) {
+                    if (username !== inputName&&inputName!==""&&inputName!==null) {
+                        logout();
+                        window.location = '/login.html';
+                        return;
+                    }
+                    $.ajaxSetup ({cache:false});
+                    getUserDetailsNoCache();
+                } else if (data.code === 401) {
+                    window.location = "/login.html";
+                } else if (data.code !== 200) {
+                    window.alert(data.message);
+                }
+            },
+            error: function () {
+                window.location = "/500page.html";
+            },
+        });
     }
+
 
     window.onload = getUserDetails();
 
+    function getUserDetailsNoCache() {
+        $.ajax({
+            type: 'get',
+            url: '/api/user/getUserDetails',
+            async: false,
+            data: {},
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: true,
+            },
+            headers: {
+                'Cache-Control':'no-cache',
+            },
+            cache:false,
+            success: function (data) {
+                if (data.code === 200) {
+                    username = data.data.username;
+                    message = data.data.userInfo.message;
+
+                    if (data.data.userInfo.sex === "男") {
+                        sexFlag = "fa fa-mars i-user";
+                    } else {
+                        sexFlag = "fa fa-venus i-user";
+                    }
+
+                    $(".content-user").html("<div class=\"content-user\">\n" +
+                        "        <div class=\"details-user\">\n" +
+                        "            <h2 id=\"card-name\" class=\"h2-user\">" + data.data.username + "\n" +
+                        "                <i id=\"card-sex\" class=\"" + sexFlag + "\" aria-hidden=\"true\"></i>\n" +
+                        "                <br />\n" +
+                        "                <span id=\"card-message\" class=\"span-user\">"+message+"</span></h2>\n" +
+                        "            <div class=\"data\">\n" +
+                        "                <h3 id=\"card-data1\" class=\"h3-user\">\n" +
+                        "                    0\n" +
+                        "                    <br />\n" +
+                        "                    <span class=\"span-user\">游戏局数</span>\n" +
+                        "                </h3>\n" +
+                        "                <h3 id=\"card-data2\" class=\"h3-user\">\n" +
+                        "                    0%\n" +
+                        "                    <br />\n" +
+                        "                    <span class=\"span-user\">游戏胜率</span>\n" +
+                        "                </h3>\n" +
+                        "                <h3 id=\"card-data3\" class=\"h3-user\">\n" +
+                        "                    0\n" +
+                        "                    <br />\n" +
+                        "                    <span class=\"span-user\">熄灯关数</span>\n" +
+                        "                </h3>\n" +
+                        "            </div>\n" +
+                        "            <div class=\"actionBtn\">\n" +
+                        "                <button id=\"card-button1\" class=\"button-user\" type=\"button\" onclick=\"modifyInfo()\">登录用户</button>\n" +
+                        "                <button id=\"card-button2\" class=\"button-user\" type=\"button\" onclick=\"modifyIcon()\">注册用户</button>\n" +
+                        "            </div>\n" +
+                        "        </div>\n" +
+                        "    </div>")
+                    sex = data.data.userInfo.sex;
+                    if (data.data.userInfo.sex === "男") {
+                        $("#card-sex").css("color", "#0679a2");
+                        if (data.data.userInfo.icon===null)
+                            $(".img-user").attr("src", "static/images/boy.png");
+                    }
+                    if (data.data.userInfo.icon!==null) {
+                        icon = data.data.userInfo.icon;
+                        $(".img-user").attr("src", icon);
+                    }
+
+                    $("#card-button1").attr("onClick", "modifyInfo()")
+                    $("#card-message").text(data.data.userInfo.message);
+                    $("#card-data1").html(data.data.userScore.wins + "<br />\n" +
+                        "                    <span class=\"span-user\">游戏局数</span>");
+                    $("#card-data2").html(data.data.userScore.winRate + '%' + "<br />\n" +
+                        "                    <span class=\"span-user\">游戏胜率</span>");
+                    $("#card-data3").html(data.data.userScore.passNumber + "<br />\n" +
+                        "                    <span class=\"span-user\">熄灯关数</span>");
+                    $("#card-button1").text("修改信息");
+                    $("#card-button2").text("修改头像");
+                    // $(".imgBox").css("transform","translate(50%)")
+
+
+                } else if (data.code === 401) {
+                    //未登录
+                } else if (data.code !== 200) {
+                    //未登录
+                }
+            },
+        })
+    }
     function getUserDetails() {
         $.ajax({
             type: 'get',
@@ -430,9 +604,9 @@
                 var isPhone = /mobile/i.test(info);
                 //如果包含“Mobile”（是手机设备）则返回true
                 if (isPhone) {
-                    window.location="/login.html"
+                    window.location="/login.html";
                 }else {
-                    window.location = "/500page.html";
+                    window.location="/login.html";
                 }
             },
         });
@@ -690,33 +864,33 @@
 <div class="container-left">
     <!-- --t是自定义属性，通过var函数可调用 -->
     <li class="li-left" style="--t:20%;">
-        <a class="a-left" href="javascript:window.location='/home.html'">
+        <a class="a-left" ondblclick="window.location='/home.html'">
             <i class="fa fa-home" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:30%;">
-        <a class="a-left" href="javascript:openUserDetails()">
+        <a class="a-left" ondblclick="openUserDetails()">
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:40%;">
-        <a class="a-left" href="javascript:window.location='/500page.html'">
+        <a class="a-left" ondblclick="window.location='/500page.html'">
             <i class="fa fa-comment" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:50%;">
-        <a class="a-left" href="javascript:window.location='/select.html'">
+        <a class="a-left" ondblclick="window.location='/select.html'">
             <i class="fa fa-gamepad" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:60%;">
-        <a class="a-left" href="https://github.com/MrOwenovo?tab=repositories">
+        <a class="a-left" ondblclick="window.location.href='https://github.com/MrOwenovo?tab=repositories'">
             <!--            <i class="fa fa-shopping-bag" aria-hidden="true"></i>-->
             <i class="fa fa-github" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:70%;">
-        <a class="a-left" href="javascript:logout()">
+        <a class="a-left" ondblclick="logout()">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
         </a>
     </li>
@@ -844,16 +1018,17 @@
                 if (data.code === 200) {
                     window.location = "/home.html";
                 } else {
-                    window.alert(data.message)
+                    window.alert(data.message);
                 }
             },
             error: function (data) {
-                window.location = "/500page.html";
+                window.location = "/home.html";
             },
         })
     }
 
 </script>
+
 
 
 </html>

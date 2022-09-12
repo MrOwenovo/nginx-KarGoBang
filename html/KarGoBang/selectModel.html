@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<h1 class="container-h1">&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Remote connection</h1>
+<h1 class="container-h1">Remote connection</h1>
 <div class="container-wrapper">
 
     <div class="container" id="c0">
@@ -55,7 +55,7 @@
 
             </div>
         </div>
-        <a href="/createRoom.html" class="story" id="s0">
+        <a onclick="window.location='/createRoom.html'" class="story" id="s0">
             <div class="info">
                 <h3 class="container-h3">创建房间</h3>
                 <p class="container-p"> 创建房间，将房间号分享给其他人进行联机</p>
@@ -102,7 +102,7 @@
 
             </div>
         </div>
-        <a href="/addRoom.html"  class="story" id="s1">
+        <a onclick="window.location='/addRoom.html'"  class="story" id="s1">
             <div class="info">
                 <h3 class="container-h3">加入房间</h3>
                 <p class="container-p"> 输入好友的房间号，进入其他人的房间</p>
@@ -112,7 +112,7 @@
 
 
     <div class="page">
-        <h4 class="container-h4">&nbsp&nbsp&nbsp&nbsp远程联机</h4>
+        <h4 class="container-h4">远程联机</h4>
         <ul><li class="container-li"> <<< </li>
 
             <li class="container-li"> >>> </li>
@@ -124,33 +124,33 @@
 <div class="container-left">
     <!-- --t是自定义属性，通过var函数可调用 -->
     <li class="li-left" style="--t:20%;">
-        <a class="a-left" href="javascript:window.location='/home.html'">
+        <a class="a-left" ondblclick="window.location='/home.html'">
             <i class="fa fa-home" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:30%;">
-        <a class="a-left" href="javascript:openUserDetails()">
+        <a class="a-left" ondblclick="openUserDetails()">
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:40%;">
-        <a class="a-left" href="javascript:window.location='/500page.html'">
+        <a class="a-left" ondblclick="window.location='/500page.html'">
             <i class="fa fa-comment" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:50%;">
-        <a class="a-left" href="javascript:window.location='/select.html'">
+        <a class="a-left" ondblclick="window.location='/select.html'">
             <i class="fa fa-gamepad" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:60%;">
-        <a class="a-left" href="https://github.com/MrOwenovo?tab=repositories">
+        <a class="a-left" ondblclick="window.location.href='https://github.com/MrOwenovo?tab=repositories'">
             <!--            <i class="fa fa-shopping-bag" aria-hidden="true"></i>-->
             <i class="fa fa-github" aria-hidden="true"></i>
         </a>
     </li>
     <li class="li-left" style="--t:70%;">
-        <a class="a-left" href="javascript:logout()">
+        <a class="a-left" ondblclick="logout()">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
         </a>
     </li>
@@ -198,6 +198,11 @@
     </div>
 </div>
 </body>
+<style>
+    .h2-user{
+        transform: translateY(32px);
+    }
+</style>
 <script src="static/js/left.js"></script>
 
 </html>
