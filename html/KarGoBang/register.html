@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="static/css/checkBox.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/card.css">
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body style="'background:url('+'../static/images/wallpaper.jpg'+') no-repeat;background-size: cover;background-attachment: fixed;'">
 <form class="login" method="post" id="login_form">
@@ -115,113 +116,158 @@
         $(".span-user").css("font-size", "0.55em");
     });
     function register() {
-        var username = $('#username').val()
-        var password = $('#password').val()
-        var email = $('#email').val()
-        var code = $('#input_email').val()
-        if ($('#input_email').val() === "") {
-            window.alert("验证码不能为空!")
-            return false;
-        }
-        if (username === "") {
-            window.alert("账号不能为空!")
-            return false;
-        }
-        if (password === "") {
-            window.alert("密码不能为空!")
-            return false;
-        }
-        $.ajax({
-            type: "post",
-            url: '/api/auth/register',
-            async: false,
-            data: {
-                'username':username,
-                'password': password,
-                'email': email,
-                'code':code,
-
-            },
-            dataType:"json",
-            xhrFields:{
-                withCredentials: true,
-            },
-            success: function (data) {
-                if (data.code === 200) {
-                    //立刻登录
-                    $.ajax({
-                        type: "post",
-                        url: '/api/auth/login',
-                        async: true,
-                        data:{
-                            'username':username,
-                            'password': password,
-                        },
-                        dataType:"json",
-                        xhrFields:{
-                            withCredentials: true,
-                        },
-                        success: function (data) {
-                            if (data.code === 200) {
-                                window.location = "/selectModel.html";
-                            } else {
-                                window.location = "/register.html";
-                                window.alert(data.message)
-                            }
-                        },
-                        error: function (data) {
-                            window.location = "/500page.html";
-
-                        },
-                    });
-                } else {
-                    window.location = "/register.html";
-                    window.alert(data.message)
-                }
-            },
-            error: function (data) {
-                window.location = "/500page.html";
-            },
-
+    var username = $('#username').val();
+    var password = $('#password').val();
+    var email = $('#email').val();
+    var code = $('#input_email').val();
+    
+    if ($('#input_email').val() === "") {
+        Swal.fire({
+            title: '错误!',
+            text: '验证码不能为空!',
+            icon: 'error',
+            confirmButtonText: '好的'
         });
+        return false;
     }
-    function verify() {
-        var email = $('#email').val();
-        if (email === "") {
-            window.alert("邮箱不能为空!");
-            return false;
-        } else {
-            if (!checkEmail(email)) {
-                window.alert("邮箱格式不正确!");
-                $('#email').val("");
-                return false;
+    if (username === "") {
+        Swal.fire({
+            title: '错误!',
+            text: '账号不能为空!',
+            icon: 'error',
+            confirmButtonText: '好的'
+        });
+        return false;
+    }
+    if (password === "") {
+        Swal.fire({
+            title: '错误!',
+            text: '密码不能为空!',
+            icon: 'error',
+            confirmButtonText: '好的'
+        });
+        return false;
+    }
+
+    $.ajax({
+        type: "post",
+        url: '/api/auth/register',
+        async: false,
+        data: {
+            'username': username,
+            'password': password,
+            'email': email,
+            'code': code,
+        },
+        dataType: "json",
+        xhrFields: {
+            withCredentials: true,
+        },
+        success: function (data) {
+            if (data.code === 200) {
+                // 立刻登录
+                $.ajax({
+                    type: "post",
+                    url: '/api/auth/login',
+                    async: true,
+                    data: {
+                        'username': username,
+                        'password': password,
+                    },
+                    dataType: "json",
+                    xhrFields: {
+                        withCredentials: true,
+                    },
+                    success: function (data) {
+                        if (data.code === 200) {
+                            window.location = "/selectModel.html";
+                        } else {
+                            window.location = "/register.html";
+                            Swal.fire({
+                                title: '错误!',
+                                text: data.message,
+                                icon: 'error',
+                                confirmButtonText: '好的'
+                            });
+                        }
+                    },
+                    error: function () {
+                        window.location = "/500page.html";
+                    },
+                });
+            } else {
+                window.location = "/register.html";
+                Swal.fire({
+                    title: '错误!',
+                    text: data.message,
+                    icon: 'error',
+                    confirmButtonText: '好的'
+                });
             }
-        }
-        $.ajax({
-            type: "post",
-            url: '/api/auth/verify',
-            async: false,
-            data: {
-                'email': email,
-            },
-            dataType:"json",
-            xhrFields:{
-                withCredentials: true,
-            },
-            success: function (data) {
-                if (data.code === 200) {
-                    window.alert("发送验证码成功!");
+        },
+        error: function () {
+            window.location = "/500page.html";
+        },
+    });
+}
 
-                } else {
-                    window.alert(data.message)
-                }
-            },
-            error: function () {
-                window.location="/500page.html"
-            },
-
+function verify() {
+    var email = $('#email').val();
+    if (email === "") {
+        Swal.fire({
+            title: '错误!',
+            text: '邮箱不能为空!',
+            icon: 'error',
+            confirmButtonText: '好的'
         });
+        return false;
+    } else {
+        if (!checkEmail(email)) {
+            Swal.fire({
+                title: '错误!',
+                text: '邮箱格式不正确!',
+                icon: 'error',
+                confirmButtonText: '好的'
+            });
+            $('#email').val("");
+            return false;
+        }
     }
+
+    $.ajax({
+        type: "post",
+        url: '/api/auth/verify',
+        async: false,
+        data: {
+            'email': email,
+        },
+        dataType: "json",
+        xhrFields: {
+            withCredentials: true,
+        },
+        success: function (data) {
+            if (data.code === 200) {
+                Swal.fire({
+                    title: '成功!',
+                    text: '发送验证码成功!',
+                    icon: 'success',
+                    confirmButtonText: '好的'
+                });
+            } else {
+                Swal.fire({
+                    title: '错误!',
+                    text: data.message,
+                    icon: 'error',
+                    confirmButtonText: '好的'
+                });
+            }
+        },
+        error: function () {
+            window.location = "/500page.html";
+        },
+    });
+}
+
 
     function checkEmail() {
         var myforms = document.forms;

@@ -281,3 +281,11 @@ ul li{
         text-decoration: none;
     }
 }
+.swal2-title {
+    color: #007bff; /* 标题颜色 */
+}
+.swal2-confirm {
+    background-color: #28a745; /* 确认按钮背景色 */
+    color: white; /* 确认按钮文字颜色 */
+}
+

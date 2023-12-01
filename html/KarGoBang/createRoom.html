@@ -17,6 +17,7 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/card.css">
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="shortcut icon" href="static/images/favicon.ico">
 
@@ -217,10 +218,17 @@
 
     });
     function redo() {  //刷新大厅
-        window.alert("刷新成功!")
-
-        initFall();
-    }
+    Swal.fire({
+        title: '刷新成功!',
+        text: '大厅已刷新。',
+        icon: 'success',
+        confirmButtonText: '好的'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            initFall();
+        }
+    });
+}
 
     function refreshRooms() {  //清理过期房间
         $.ajax({
@@ -239,7 +247,13 @@
                     window.location="/login.html"
                 }else if (data.code !== 200) {
 
-                    window.alert(data.message);
+                    Swal.fire({
+    title: '提示',
+    text: data.message,
+    icon: 'info',
+    confirmButtonText: '确定'
+});
+
                 }
             },
             error: function () {
@@ -343,8 +357,18 @@
                             window.location="/login.html"
                         }else if (data.code !== 200) {
                             refreshRooms();
-                            window.alert(data.message);
-                            window.location="/createRoom.html"
+                            Swal.fire({
+    title: '提示',
+    text: data.message,
+    icon: 'info',
+    confirmButtonText: '确定'
+}).then((result) => {
+        if (result.isConfirmed) {
+            window.location="/createRoom.html"
+        }
+    });
+
+                            
                         }
                     },
                     error: function () {
@@ -387,7 +411,12 @@
                     window.location="/login.html"
                 }else if (data.code !== 200) {
                     window.location="/addRoom.html"
-                    window.alert(data.message);
+                    Swal.fire({
+    title: '提示',
+    text: data.message,
+    icon: 'info',
+    confirmButtonText: '确定'
+});
                 }
             },
             error: function () {
@@ -411,13 +440,27 @@
                 },
                 success: function (data) {
                     if (data.code === 200) {
-                        window.alert("房间创建成功,有效时间10分钟~")
-                        window.location = "/room.html";
+						Swal.fire({
+        title: '成功!',
+        text: '房间创建成功,有效时间10分钟~',
+        icon: 'success',
+        confirmButtonText: '好的'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location = "/room.html";
+        }
+    });
+                        
                     } else if (data.code === 401) {
                         window.location = "/login.html";
                     }else if (data.code !== 200) {
                         window.location="/createRoom.html";
-                        window.alert(data.message);
+                        Swal.fire({
+    title: '提示',
+    text: data.message,
+    icon: 'info',
+    confirmButtonText: '确定'
+});
                     }
                 },
                 error: function () {

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="static/css/checkBox.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/card.css">
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body style="'background:url('+'../static/images/wallpaper.jpg'+') no-repeat;background-size: cover;background-attachment: fixed;'">
@@ -111,42 +112,59 @@
 <script>
 
     function login() {
-        var formObject = {};
-        var formArray =$("#login_form").serializeArray();
-        $.each(formArray,function(i,item){
-            formObject[item.name] = item.value;
-        });
+    var formObject = {};
+    var formArray = $("#login_form").serializeArray();
+    $.each(formArray, function(i, item) {
+        formObject[item.name] = item.value;
+    });
 
-//信息核验
-        if (formObject['username'] == "" || formObject['username'] == null) {
-            window.alert("输入账号不能为空！");
-        }
-        if (formObject['password'] == "" || formObject['password'] == null) {
-            window.alert("输入密码不能为空！");
-        }
-
-        $.ajax({
-            type: "post",
-            url: '/api/auth/login',
-            async: true,
-            data: formObject,
-            dataType:"json",
-            xhrFields:{
-                withCredentials: true,
-            },
-            success: function (data) {
-                if (data.code === 200) {
-                    window.location = "/selectModel.html";
-                } else {
-                    $("#login-password").val("");
-                    window.alert(data.message)
-                }
-            },
-            error: function () {
-                window.location = "/500page.html";
-            },
+    // 信息核验
+    if (formObject['username'] == "" || formObject['username'] == null) {
+        Swal.fire({
+            title: '错误!',
+            text: '输入账号不能为空！',
+            icon: 'error',
+            confirmButtonText: '好的'
         });
+        return; // 添加 return 以避免发送不必要的 AJAX 请求
     }
+    if (formObject['password'] == "" || formObject['password'] == null) {
+        Swal.fire({
+            title: '错误!',
+            text: '输入密码不能为空！',
+            icon: 'error',
+            confirmButtonText: '好的'
+        });
+        return; // 添加 return 以避免发送不必要的 AJAX 请求
+    }
+
+    $.ajax({
+        type: "post",
+        url: '/api/auth/login',
+        async: true,
+        data: formObject,
+        dataType: "json",
+        xhrFields: {
+            withCredentials: true,
+        },
+        success: function(data) {
+            if (data.code === 200) {
+                window.location = "/selectModel.html";
+            } else {
+                $("#login-password").val("");
+                Swal.fire({
+                    title: '登录失败!',
+                    text: data.message,
+                    icon: 'error',
+                    confirmButtonText: '好的'
+                });
+            }
+        },
+        error: function() {
+            window.location = "/500page.html";
+        },
+    });
+}
 
 
 

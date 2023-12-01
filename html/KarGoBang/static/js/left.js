@@ -19,28 +19,38 @@ function modifyIcon() {
     })
 }
 
-function upload(file) {
+ function upload(file) {
     const isImage = (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/gif');
-    const isLimit = file.size / 1024 < 30;
+    const isLimit = file.size / 1024 / 1024 < 0.5; // 确保文件大小在 500 KB 以下
+
     if (!isImage) {
-        window.alert('上传文件只能是图片格式!')
+        Swal.fire({
+            title: '错误!',
+            text: '上传文件只能是图片格式!',
+            icon: 'error',
+            confirmButtonText: '好的'
+        });
         return false;
     }
-    if (!isLimit)
-    {
-        window.alert('上传文件大小不能超过 500 KB!')
+    if (!isLimit) {
+        Swal.fire({
+            title: '错误!',
+            text: '上传文件大小不能超过 500 KB!',
+            icon: 'error',
+            confirmButtonText: '好的'
+        });
         return false;
     }
-    var reader = new FileReader()
-    reader.readAsDataURL(file)
+
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
     reader.onload = () => {
         $.ajax({
             type: "post",
             url: '/api/user/uploadIcon',
-            // cache: false,
             dataType: "json",
             data: {
-                file:reader.result
+                file: reader.result
             },
             xhrFields: {
                 withCredentials: true,
@@ -48,13 +58,22 @@ function upload(file) {
             success: function (data) {
                 if (data.code === 200) {
                     $(".img-user").attr("src", reader.result);
-
                 } else {
-                    window.alert(data.message)
+                    Swal.fire({
+                        title: '上传失败!',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: '好的'
+                    });
                 }
             },
             error: function () {
-                window.alert("服务器未连接,修改失败,请联系管理员");
+                Swal.fire({
+                    title: '服务器错误!',
+                    text: '服务器未连接,修改失败,请联系管理员',
+                    icon: 'error',
+                    confirmButtonText: '好的'
+                });
             },
         });
     };
@@ -156,26 +175,39 @@ function saveInfo() {
     let inputName = $(".wrapper-input").val();
     let inputMessage = $(".wrapper-input-2").val();
     let inputSex = $("#checkbox-sex").text();
+
     if (username === inputName && message === inputMessage && sex === inputSex) {
-        window.alert("跟原用户信息无变化!");
+        Swal.fire({
+            title: '通知!',
+            text: '跟原用户信息无变化!',
+            icon: 'info',
+            confirmButtonText: '好的'
+        });
         return;
     }
-    let formatData = {};
-    if (inputName === "" && inputMessage === ""&&sex === inputSex) {
-            window.alert("内容不能为空!");
-            return;
 
+    let formatData = {};
+    if (inputName === "" && inputMessage === "" && sex === inputSex) {
+        Swal.fire({
+            title: '错误!',
+            text: '内容不能为空!',
+            icon: 'error',
+            confirmButtonText: '好的'
+        });
+        return;
     }
-    if (username !== inputName && inputName !== ""&& inputName !== null) {
+
+    if (username !== inputName && inputName !== "" && inputName !== null) {
         formatData['username'] = inputName;
     }
-    if (message !== inputMessage && inputMessage !== ""&& inputMessage !== null) {
+    if (message !== inputMessage && inputMessage !== "" && inputMessage !== null) {
         formatData['message'] = inputMessage;
     }
     if (sex !== inputSex) {
         formatData['sex'] = inputSex;
     }
-    if (username !== inputName && message !== inputMessage && sex !== inputSex&&inputName !==""&&inputMessage!==""&& inputSex !== "") {
+
+    if (username !== inputName && message !== inputMessage && sex !== inputSex && inputName !== "" && inputMessage !== "" && inputSex !== "") {
         $.ajax({
             type: "put",
             url: '/api/user/modifyUserDetails',
@@ -186,19 +218,7 @@ function saveInfo() {
                 withCredentials: true,
             },
             success: function (data) {
-                if (data.code === 200) {
-                    if (username !== inputName&&inputName!==""&&inputName!==null) {
-                        logout();
-                        window.location = '/login.html';
-                        return;
-                    }
-                    $.ajaxSetup ({cache:false});
-                    getUserDetailsNoCache();
-                } else if (data.code === 401) {
-                    window.location = "/login.html";
-                } else if (data.code !== 200) {
-                    window.alert(data.message);
-                }
+                handleAjaxResponse(data, inputName);
             },
             error: function () {
                 window.location = "/500page.html";
@@ -206,6 +226,7 @@ function saveInfo() {
         });
         return;
     }
+
     $.ajax({
         type: "patch",
         url: '/api/user/modifySomeUserDetails',
@@ -216,24 +237,33 @@ function saveInfo() {
             withCredentials: true,
         },
         success: function (data) {
-            if (data.code === 200) {
-                if (username !== inputName&&inputName!==""&&inputName!==null) {
-                    logout();
-                    window.location = '/login.html';
-                    return;
-                }
-                $.ajaxSetup ({cache:false});
-                getUserDetailsNoCache();
-            } else if (data.code === 401) {
-                window.location = "/login.html";
-            } else if (data.code !== 200) {
-                window.alert(data.message);
-            }
+            handleAjaxResponse(data, inputName);
         },
         error: function () {
             window.location = "/500page.html";
         },
     });
+}
+
+function handleAjaxResponse(data, inputName) {
+    if (data.code === 200) {
+        if (username !== inputName && inputName !== "" && inputName !== null) {
+            logout();
+            window.location = '/login.html';
+            return;
+        }
+        $.ajaxSetup ({cache:false});
+        getUserDetailsNoCache();
+    } else if (data.code === 401) {
+        window.location = "/login.html";
+    } else if (data.code !== 200) {
+        Swal.fire({
+            title: '错误!',
+            text: data.message,
+            icon: 'error',
+            confirmButtonText: '好的'
+        });
+    }
 }
 
 window.onload = getUserDetails();
@@ -442,7 +472,13 @@ function logout() {
             if (data.code === 200) {
                 window.location = "/home.html";
             } else {
-                window.alert(data.message)
+                Swal.fire({
+    title: '提示',
+    text: data.message,
+    icon: 'info',
+    confirmButtonText: '确定'
+});
+
             }
         },
         error: function (data) {
