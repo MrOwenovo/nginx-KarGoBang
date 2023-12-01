@@ -1,0 +1,374 @@
+/* 重置样式，确保一致性 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 确保 #home 占满整个视口高度，并且其子元素水平和垂直居中 */
+#home {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  min-height: 100vh;
+  width: 100%; /* 确保占满整个宽度 */
+}
+
+
+
+
+/* 对 .home-thumb 中的标题和按钮进行样式设置 */
+.home-thumb {
+  text-align: center; /* 居中对齐文本 */
+  width: 100%; /* 占满容器宽度 */
+}
+
+.home-thumb h3 {
+  color: #FFFFFF;
+  font-size: 1em; /* 根据需要调整大小 */
+  margin-bottom: 2.6em; /* 标题和按钮之间的空间 */
+  letter-spacing: 0.3em; /* 增加字母间距 */
+}
+
+/* 按钮样式调整 */
+.btn {
+  font-size: 1em; /* 根据需要调整大小 */
+  padding: 0.7em 2em; /* 增大按钮内部填充以匹配设计 */
+  margin: 0.5em; /* 按钮周围的空间 */
+  border: 3px solid #e5e5e5; /* 增加边框宽度以匹配设计 */
+  background: transparent;
+  color: #e5e5e5;
+  text-transform: uppercase; /* 可选：样式首选项 */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block; /* 确保按钮不会被拉伸 */
+  font-weight: bold; /* 增加字体粗细以匹配设计 */
+  border-radius: 0;
+  
+}
+/* 单独为左边的按钮添加右外边距，增加特异性 */
+.home-thumb .btn.btn-default {
+  margin-right: 2em; /* 增加两个按钮之间的距离 */
+}
+
+
+/* 右边按钮样式 */
+.btn-success {
+  background-color: #e5e5e5; /* 白色背景 */
+  color: #343434; /* 黑色文本 */
+  border: 2px solid #e5e5e5; /* 白色边框，可根据需要调整或移除 */
+  font-weight: bold; /* 加粗字体 */
+  /* 其他样式保持不变 */
+}
+
+/* 鼠标悬停效果调整 */
+.btn-default:hover {
+  background-color: #eb6877;
+  color: #e5e5e5;
+}
+
+
+
+/* 右边按钮的鼠标悬停效果 */
+.btn-success:hover {
+  background-color: #eb6877; /* 鼠标悬停时的粉红色背景 */
+  color: #FFFFFF; /* 鼠标悬停时的白色文本 */
+  border-color: #eb6877; /* 鼠标悬停时的边框颜色 */
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .home-thumb h3 {
+    font-size: 1.2em; /* 较小的设备上的字体大小 */
+  }
+
+  .btn {
+    font-size: 0.8em; /* 较小的设备上的按钮字体大小 */
+    padding: 0.4em 0.8em; /* 较小的设备上的按钮内部填充 */
+  }
+}
+
+/* 这个样式应该放在您的CSS文件的最后，确保它能够覆盖之前的样式 */
+
+@media (min-width: 760px) {
+  #home {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    text-align: center;
+    height: 100vh;
+  }
+
+  .home-thumb {
+    width: 100%; /* 确保占满可用宽度 */
+  }
+  
+  /* 如果有特定的容器限制了宽度，请确保它们的宽度不会影响居中 */
+  .home-thumb > *, .container, .row, .col-md-offset-2, .col-md-8, .col-sm-12 {
+    max-width: none;
+    margin: 0 auto; /* 自动外边距实现居中 */
+  }
+}
+
+
+
+
+footer {
+  background: #f8f9fa; /* 背景色 */
+  color: #6c757d; /* 字体颜色 */
+  padding-top: 40px; /* 上内边距 */
+  padding-bottom: 40px; /* 下内边距 */
+}
+
+footer h2 {
+  color: #343a40; /* 标题颜色 */
+  margin-bottom: 20px; /* 标题下边距 */
+}
+
+footer p {
+  font-size: 14px; /* 字体大小 */
+  line-height: 28px; /* 行高 */
+  margin-bottom: 0; /* 移除段落下边距 */
+}
+
+footer .wow {
+  opacity: 0.7; /* 透明度 */
+}
+
+footer a {
+  color: #007bff; /* 链接颜色 */
+}
+
+footer a:hover {
+  color: #0056b3; /* 链接悬停颜色 */
+}
+
+footer .container {
+  position: relative; /* 相对定位 */
+}
+
+footer .svgcolor-light {
+  fill: #f8f9fa; /* SVG填充颜色 */
+  position: absolute; /* 绝对定位 */
+  bottom: 100%; /* 位置在底部之上 */
+  width: 100%; /* 宽度 */
+  height: auto; /* 高度自适应 */
+}
+
+footer .elsta,
+footer .kachat,
+footer .mk {
+  width: auto; /* 宽度自适应 */
+  height: auto; /* 高度自适应 */
+  max-width: 100%; /* 最大宽度 */
+  max-height: 60px; /* 最大高度 */
+}
+
+@media (max-width: 767px) {
+  footer .container {
+    padding-left: 15px; /* 左内边距 */
+    padding-right: 15px; /* 右内边距 */
+  }
+
+  footer h2,
+  footer p {
+    text-align: center; /* 文本居中 */
+  }
+
+  footer .svgcolor-light {
+    display: none; /* 小屏幕下隐藏SVG */
+  }
+}
+
+/* */
+/* Footer Styles */
+footer {
+  background-color: #1A1A1A; /* Dark background for contrast */
+  color: #FFF; /* Light text color for readability */
+  padding: 3rem 0; /* Ample padding for visual space */
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern font */
+}
+
+footer h2, footer .section-title h1 {
+  color: #FFD700; /* Gold color for important titles */
+  margin-bottom: 1rem; /* Space below titles */
+  font-weight: normal; /* Avoid bold fonts for titles */
+}
+
+footer p, footer .section-title p {
+  color: #CCCCCC; /* Light grey color for less important text */
+  font-size: 0.9rem; /* Smaller font size for details */
+  line-height: 1.5; /* Line height for better readability */
+  margin-bottom: 1.5rem; /* Space below paragraphs */
+}
+
+footer a {
+  color: #FFD700; /* Links in gold color to stand out */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+footer a:hover {
+  color: #FFF; /* White color on hover for visibility */
+  text-decoration: none; /* No underline on hover */
+}
+
+footer .container {
+  max-width: 1170px; /* Max container width */
+  margin: 0 auto; /* Center container */
+  padding: 0 15px; /* Padding on sides */
+}
+
+footer .social-icons {
+  margin-top: 2rem; /* Space for social icons */
+}
+
+footer .social-icons a {
+  display: inline-block; /* Display icons in line */
+  margin-right: 10px; /* Space between icons */
+}
+
+footer .social-icons a:last-child {
+  margin-right: 0; /* No margin for the last icon */
+}
+
+footer .svgcolor-light {
+  display: none; /* Remove the SVG shape */
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 2rem 0; /* Less padding on small devices */
+  }
+
+  footer .social-icons {
+    text-align: center; /* Center icons on small screens */
+    margin-top: 1rem; /* Adjust space for mobile */
+  }
+}
+
+footer p {
+  color: #FFF !important; /* Light text color for readability, with highest priority */
+}
+
+
+
+
+/* */
+/* Section Base Styles for #feature and #contact */
+#feature,
+#contact {
+  background-color: #f8f9fa; /* 软背景颜色 */
+  padding: 60px 0; /* 充足的内边距用于间距 */
+  color: #333; /* 可读的文本颜色 */
+}
+#feature{
+	margin-top:50px;
+	padding-top:200px;
+	background-image: url('https://mdn.alipayobjects.com/huamei_0prmtq/afts/img/A*7PeXSKeN1noAAAAAAAAAAAAADvuFAQ/original');
+	background-size: cover; /* Adjust background size as needed */
+	background-repeat: no-repeat; /* Prevent background image from repeating */
+	background-position: center center; /* Center the background image */
+}
+#contact{
+	padding-bottom:100px;
+}
+
+/* Section Title Styles for #feature and #contact */
+#feature h1,
+#contact h1 {
+  color: #212529; /* 更深的标题颜色 */
+  font-size: 2.5rem; /* 大号字体以增强可见性 */
+  margin-bottom: 30px; /* 标题之后的空间 */
+  text-align: center; /* 居中标题 */
+}
+
+/* Section Paragraph Styles for #feature and #contact */
+#feature p,
+#contact p {
+  font-size: 1rem; /* 标准字体大小 */
+  line-height: 1.8; /* 增加行高以增强可读性 */
+  margin-bottom: 20px; /* 段落之后的间距 */
+  text-align: center; /* 居中文本 */
+  max-width: 800px; /* 文本的最大宽度以保持可读性 */
+  margin-left: auto; /* 文本块在水平方向居中 */
+  margin-right: auto;
+}
+
+/* Media Object within #feature and #contact */
+#feature .media,
+#contact .media {
+  display: flex;
+  align-items: center; /* 垂直对齐媒体项目 */
+  margin-bottom: 40px; /* 媒体对象之间的间距 */
+}
+
+/* Icons or Images within Media Object for #feature and #contact */
+#feature .media i,
+#feature .media img,
+#contact .media i,
+#contact .media img {
+  font-size: 3rem; /* 图标大小 */
+  color: #384151; /* 图标颜色 */
+  margin-right: 20px; /* 图标之后的空间 */
+}
+
+/* Media Heading Styles for #feature and #contact */
+#feature .media h2,
+#contact .media h2 {
+  font-size: 1.5rem; /* 媒体标题大小 */
+  color: #212529; /* 媒体标题颜色 */
+  margin-bottom: 10px; /* 标题之后的间距 */
+}
+
+/* Button Styles within #feature and #contact Sections */
+#feature a.btn,
+#contact a.btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect for #feature and #contact Sections */
+#feature a.btn:hover,
+#contact a.btn:hover {
+  background-color: #0056b3 !important;
+}
+
+/* Responsive Styles */
+/* （这里是之前的响应式样式，保持不变） */
+
+.col-md-offset-3{
+
+  align-items: center; /* 垂直对齐媒体项目 */
+}
+
+.bottom_button{
+	margin-top:50px;
+	font-color:#FFFFFF;
+}
+
+/* 移除所有动画效果导致的额外间隔 */
+#about .wow {
+    margin: 0;
+    padding: 0;
+	
+}
+
+
+
+/* 检查并调整row的样式 */
+.row {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* 检查并调整col-md-5和col-sm-12的样式 */
+.col-md-5, .col-sm-12 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
