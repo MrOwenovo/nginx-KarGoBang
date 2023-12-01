@@ -21,7 +21,7 @@ function modifyIcon() {
 
 function upload(file) {
     const isImage = (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/gif');
-    const isLimit = file.size / 1024 / 512 < 1;
+    const isLimit = file.size / 1024 < 30;
     if (!isImage) {
         window.alert('上传文件只能是图片格式!')
         return false;
