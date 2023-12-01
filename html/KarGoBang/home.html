@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="keywords" content="KarGoBang，三维四子棋，kagobang">
     <meta name="description" content="KarGoBang是一款支持AI,联机的三维四子棋游戏">
-    <link rel="stylesheet" href="https://www.fcwqmc.cn/elsta/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://www.fcwqmc.cn/elsta/css/animate.min.css">
-    <link rel="stylesheet" href="https://www.fcwqmc.cn/elsta/css/vegas.min.css">
-    <link rel="stylesheet" href="https://www.fcwqmc.cn/elsta/css/style.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="static/css/vegas.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/et-line-font.css">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="static/css/left.css">
     <link rel="shortcut icon" href="static/images/favicon.ico">
     <link rel="stylesheet" href="static/css/input.css">
@@ -45,7 +46,7 @@
                         "    <h1 class=\"email-h1\">这是最新的更新消息</h1>\n" +
                         "    <img class=\"email-img\" src=\"static/images/email.svg\" alt=\"\">\n" +
                         "      <p class=\"email-p\" style='transform: translateY(-20px)'>" +
-						" 祝大家中秋节快乐！！<br>"+
+						" 祝大家五一快乐！！<br>"+
                         "·修复了手机误触问题<br>" +
                         "·再次优化AI逻辑<br>" +
                         "·修复了AI有一个方向计算错误导致在棋盘外围下子的bug<br>" +
@@ -71,7 +72,7 @@
                         "    <h1 class=\"email-h1\">这是最新的更新消息</h1>\n" +
                         "    <img class=\"email-img\" src=\"static/images/email.svg\" alt=\"\">\n" +
                         "      <p class=\"email-p\" style='transform: translateY(-20px)'>" +
-						" 祝大家中秋节快乐！！<br>"+
+						" 祝大家五一快乐！！<br>"+
                         "·修复了手机误触问题<br>" +
                         "·再次优化AI逻辑<br>" +
                         "·修复了AI有一个方向计算错误导致在棋盘外围下子的bug<br>" +
@@ -160,7 +161,7 @@
                         <strong style="color: #eb6877;">更多维度</strong> <strong style="color: #eb6877;">极简设计</strong>
                         <strong style="color: #eb6877;">线上联机</strong>的智能空间四子棋</h3>
                     <a href="select.html" target="_blank"
-                       class="btn btn-lg btn-default smoothScroll wow fadeInUp" data-wow-delay="0.8s">本机模式</a>
+                       class="btn btn-lg btn-default btn-left smoothScroll wow fadeInUp" data-wow-delay="0.8s">本机模式</a>
                     <a href="javascript:multiMode()" class="btn btn-lg btn-success smoothScroll wow fadeInUp"
                        data-wow-delay="1.0s">联机模式</a>
 
@@ -613,9 +614,150 @@
     }
 
 </script>
+<style>
+/* 基础样式 */
+.about-thumb {
+  background-color: #ffffff; /* 改为纯白背景或者其他和页面更协调的颜色 */
+  padding: 40px; /* 维持内边距 */
+  font-family: 'Segoe UI', sans-serif; /* 使用Segoe UI字体，或者您喜欢的任何清晰字体 */
+  color: #333; /* 基础字体颜色为深灰色，以便阅读 */
+  line-height: 1.6; /* 行高 */
+  border-radius: 8px; /* 轻微的圆角 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 轻微的阴影以提升层次感 */
+  background-image:url('https://gw.alipayobjects.com/mdn/rms_ee84bf/afts/img/A*Et4rSq1edeYAAAAAAAAAAAAAARQnAQ');
+}
+
+/* 标题样式 */
+.about-thumb .section-title h1 {
+  font-size: 28px; /* 增加字体大小 */
+  color: #000; /* 标题使用黑色字体 */
+  margin-bottom: 16px; /* 增加标题下的外边距 */
+}
+
+/* 子标题样式，移除浅灰色条 */
+.about-thumb .section-title h3 {
+  font-size: 22px; /* 调整字体大小 */
+  color: #333; /* 统一使用深灰色 */
+  margin-bottom: 10px; /* 调整外边距 */
+}
+
+/* 段落和列表样式 */
+.about-thumb p, .about-thumb ul {
+  margin-left: 0; /* 移除不必要的左边距 */
+}
+
+.about-thumb ul {
+  list-style-type: none; /* 移除列表项前的点 */
+}
+
+.about-thumb ul li {
+  padding-left: 1em; /* 添加适当的内边距 */
+  text-indent: -1em; /* 使用文本缩进来对齐列表项 */
+}
+
+/* 特别的强调文本样式 */
+.about-thumb .highlight {
+  color: #0056b3; /* 用鲜艳的蓝色来强调重要的字，增加视觉吸引力 */
+  font-weight: bold; /* 加粗 */
+}
+
+/* 响应式图片样式 */
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block; /* 保证图片不会与周围文本混排 */
+  margin-bottom: 20px; /* 图片下方的外边距 */
+}
+
+/* 清除灰色条样式 */
+.no-bar {
+  background: none; /* 移除灰色背景条 */
+  padding: 0; /* 移除内边距 */
+}
+.quan1 {
+  position: relative; /* 设置相对定位 */
+  display: inline; /* 使用inline而不是block来保持背景的尺寸和文本匹配 */
+  text-align: left; /* 文本左对齐 */
+}
+
+.quan1::before {
+  content: '';
+  position: absolute; /* 使用绝对定位 */
+  top: 50%; /* 垂直居中 */
+  left: 0; /* 从左侧开始 */
+  transform: translateY(-50%); /* 向上移动50%的自身高度来垂直居中 */
+  width: 100%; /* 宽度设置为100%，根据需要进行调整 */
+  height: 100%; /* 高度设置为100%，确保完全覆盖文本 */
+  background-image: url('https://gw.alipayobjects.com/zos/bmw-prod/8e0650ba-8432-43aa-b7b0-82fd83509619.svg');
+  background-repeat: no-repeat;
+  background-position: left center; /* 背景图片左侧居中 */
+  background-size: contain; /* 背景大小适应内容 */
+  z-index: -1; /* 确保背景位于文本之下 */
+}
+
+/* 标题和作者名的样式，确保左对齐 */
+.section-title h1,
+.section-title h3 {
+  text-align: left; /* 左对齐文本 */
+  padding-left: 20px; /* 左侧内边距，确保与圆圈背景对齐，根据需要调整 */
+  margin-left: -20px; /* 负外边距，以抵消内边距的影响 */
+  position: relative; /* 设置相对定位，确保z-index生效 */
+  z-index: 2; /* 确保文本显示在背景之上 */
+}
+.quan2{
+background-image:url('https://gw.alipayobjects.com/mdn/rms_ee84bf/afts/img/A*f8D0S4d6AgEAAAAAAAAAAAAAARQnAQ');
+background-size: cover; /* Adjust background size as needed */
+	background-repeat: no-repeat; /* Prevent background image from repeating */
+	background-position: center center; /* Center the background image */
+}
+
+.subtitle1{
+font-weight: bold; /* 维持加粗样式 */
+  display: block; /* 使其成为块级元素，单独一行显示 */
+  margin-left: 0; /* 移除左边距，确保与其他文本对齐 */
+  font-size: 20px; /* 调整字体大小，确保视觉一致性 */
+  color: #333; /* 深灰色文本，或者选择一个更匹配的颜色 */
+  margin-left: 20px; /* 调整左边距以与标题对齐 */
+  text-indent: 0; /* 如果有文本缩进，将其设为0 */
+}
+/* 调整内容的对齐方式 */
+.text-left {
+  text-align: left; /* 所有文本左对齐 */
+}
+
+.text-right {
+  text-align: right; /* 所有文本右对齐 */
+}
+
+.text-center {
+  text-align: center; /* 所有文本居中对齐 */
+}
+
+
+/* 优化间距和对齐 */
+.section-title, .about-thumb p, .about-thumb ul {
+  margin-bottom: 12px; /* 统一的底部外边距 */
+}
+/* 悬停效果 */
+.about-thumb p:hover {
+  background-color: #f0f0f0; /* 鼠标悬停时的背景颜色 */
+  color: #000000; /* 鼠标悬停时的文字颜色 */
+  cursor: pointer; /* 鼠标悬停时的光标变为手形 */
+  padding: 5px 0; /* 增加一些内边距 */
+}
+
+/* 为了视觉一致性，可能需要调整列表项默认样式 */
+.about-thumb p {
+  padding: 5px 0; /* 添加默认的上下内边距 */
+  transition: background-color 0.3s, color 0.3s; /* 平滑过渡背景色和文字颜色 */
+}
+
+
+
+</style>
 <section id="about">
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-bottom:30px;">
 
             <div class="col-md-6 col-sm-12">
                 <img class="img-responsive wow fadeInUp" alt="About"
@@ -625,154 +767,186 @@
 
             <div class="col-md-6 col-sm-12">
                 <div class="about-thumb">
-                    <div class="section-title">
+                    <div class="section-title quan1">
                         <h1 class="wow fadeIn" data-wow-delay="0.2s" style="white-space: nowrap">KarGoBang</h1>
-                        <h3 class="wow fadeInUp" data-wow-delay="0.4s" style="font-size: 25px;">作者：MrOwenovo</h3>
+                        <h3 class="wow fadeInUp quan2" data-wow-delay="0.4s" style="font-size: 25px;">作者：MrOwenovo</h3>
                         <h3 class="wow fadeInUp" data-wow-delay="0.6s" style="font-size: 20px;">AI对战、远程联机、维度拓展</h3>
                         <h3 class="wow fadeInUp kcboder" data-wow-delay="0.8s"></h3>
-                        <p class="wow fadeInUp" style="color: #448aca;font-size: 20px;margin:0px 0px 0px 25px;"
+                        <p class="wow fadeInUp subtitle1" 
                            data-wow-delay="0.8s">三维四子棋</p>
                     </div>
 
                     <div class="wow fadeInUp" data-wow-delay="1s">
-                        <p>-　　开发语言：Java,webGL-Verge3D,JavaScript</p>
-                        <p>-　　前端制作：jQuery,Photoshop</p>
-                        <p>-　　建模：blender</p>
-                        <p>-　　服务器：nginx,腾讯云轻量级服务器,阿里云数据库,docker</p>
+                        <p>·　　开发语言：Java,webGL-Verge3D,JavaScript</p>
+                        <p>·　　前端制作：jQuery,Photoshop</p>
+                        <p>·　　建模：blender</p>
+                        <p>·　　服务器：nginx,腾讯云轻量级服务器,阿里云数据库,docker</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row" >
+    <div class="col-md-5 col-sm-12">
+        <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
+             src="https://img.alicdn.com/imgextra/i1/1048138670/O1CN01EWQNB72DuuaNIMPdX_!!1048138670.jpg"
+             style="max-width: 100%;"  data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+    </div>
+    <div class="col-md-5 col-sm-12">
+        <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
+             src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01YM10NL2DuuaOtuHkj_!!1048138670.jpg"
+             style="max-width: 100% ;transform: translateY(0%); " data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+    </div>
+</div>
+
         <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <img  class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
-                     src="https://img.alicdn.com/imgextra/i1/1048138670/O1CN01EWQNB72DuuaNIMPdX_!!1048138670.jpg"
-                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
-                     src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01YM10NL2DuuaOtuHkj_!!1048138670.jpg"
-                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-5 col-sm-12">
                 <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i2/1048138670/O1CN01zDg6kJ2DuuaFMfasP_!!1048138670.jpg"
-                     style="max-width: 100%;margin-top: 160px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;transform: translateY(-5%);" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-5 col-sm-12">
                 <img class="img-responsive wow fadeInUp img-responsive center-block"  alt="About"
                      src="https://img.alicdn.com/imgextra/i2/1048138670/O1CN01ADRL9H2Duua9FKGki_!!1048138670.jpg"
                      style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
-                     src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01Yxynjw2DuuaFMdz5l_!!1048138670.jpg"
+     
+		
+		<div class="row" style="height:50%;margin-top:30px">
+		
+			<div class="col-md-5 col-sm-12">
+                <img class="img-responsive wow fadeInUp img-responsive center-block"
+                     src=""
                      style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
-            <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
-                     src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01RPJqtL2Duua9FMkXa_!!1048138670.jpg"
-                     style="max-width: 100%;margin-top: 100px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
-                     src="https://img.alicdn.com/imgextra/i2/1048138670/O1CN01m3CQD52DuuaFx3FEc_!!1048138670.jpg"
-                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
-            </div>
-            <div class="col-md-6 col-sm-12">
+			<div class="col-md-5 col-sm-12">
                 <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01XZH3r82DuuaKoH72Y_!!1048138670.jpg"
-                     style="max-width: 100%;margin-top: 170px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     style="max-width: 100%;transform: translateY(31%);" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
+           
+            
         </div>
+		
+		
+		
         <div class="row">
-            <div class="col-md-6 col-sm-12">
+		
+		<div class="col-md-5 col-sm-12">
                 <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
-                     src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01SHemXu2DuuaJO1muB_!!1048138670.jpg"
-                     style="max-width: 100%;margin-top: 100px" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+                     src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01RPJqtL2Duua9FMkXa_!!1048138670.jpg"
+                     style="max-width: 100%;transform: translateY(-58%);" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
-            <div class="col-md-6 col-sm-12">
+            
+            <div class="col-md-5 col-sm-12">
                 <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i1/1048138670/O1CN018VQ54U2DuuaLmeWyz_!!1048138670.gif"
                      style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
         </div>
+        <div class="row" style="height:5%;margin-top:30px">
+		 <div class="col-md-5 col-sm-12" >
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
+                     src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01Yxynjw2DuuaFMdz5l_!!1048138670.jpg"
+                     style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+            </div>
+		
+            <div class="col-md-5 col-sm-12">
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
+                     src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN01SHemXu2DuuaJO1muB_!!1048138670.jpg"
+                     style="max-width: 100%;transform: translateY(26%);" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+            </div>
+            
+        </div>
         <div class="row">
-            <div class="col-md-6 col-sm-12">
+		<div class="col-md-5 col-sm-12">
+                <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
+                     src="https://img.alicdn.com/imgextra/i2/1048138670/O1CN01m3CQD52DuuaFx3FEc_!!1048138670.jpg"
+                     style="max-width: 100%;transform: translateY(-25%);" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+            </div>
+		
+		
+            <div class="col-md-5 col-sm-12">
                 <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i1/1048138670/O1CN018LfKy62DuuaMFOTy0_!!1048138670.jpg"
                      style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
-            <div class="col-md-6 col-sm-12">
+            
+        </div>
+		
+		<div class="row" style=margin-top:30px">
+		<div class="col-md-5 col-sm-12">
                 <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i3/1048138670/O1CN015epcaV2DuuaJewlcL_!!1048138670.jpg"
                      style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-5 col-sm-12">
                 <img class="img-responsive wow fadeInUp img-responsive center-block"
                      src=""
                      style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
-            <div class="col-md-6 col-sm-12">
+        </div>
+		
+        <div class="row">
+		<div class="col-md-5 col-sm-12">
                 <img class="img-responsive wow fadeInUp img-responsive center-block" alt="About"
                      src="https://img.alicdn.com/imgextra/i4/1048138670/O1CN01leITnp2DuuaLmjtjO_!!1048138670.jpg"
+                     style="max-width: 100%;transform: translateY(-14%);" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
+            </div>
+            <div class="col-md-5 col-sm-12">
+                <img class="img-responsive wow fadeInUp img-responsive center-block"
+                     src=""
                      style="max-width: 100%;" data-spm-anchor-id="2013.1.0.i0.1c4c26camqi5Us">
             </div>
+            
         </div>
     </div>
 </section>
 <section id="feature">
     <div class="container">
-        <div class="row">
-            <svg preserveAspectRatio="none" viewBox="0 0 100 102" height="100" width="100%" version="1.1"
-                 xmlns="http://www.w3.org/2000/svg" class="svgcolor-light">
-                <path d="M0 0 L50 100 L100 0 Z"></path>
-            </svg>
-            <div class="col-md-4 col-sm-6">
-                <div class="media wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="media-object media-left">
-                        <i class="icon icon-desktop"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="media-heading">github完全开源</h2>
-                    </div>
-                </div>
+        <div class="row ">
+		
+		<div class="col-md-4 col-sm-4 text-center">
+                <!-- 使用新的图标 -->
+                <i class="fa fa-github fa-3x" style="margin-bottom:15px;"></i>
+                <h2 class="media-heading">github完全开源</h2>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="media wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="media-object media-left">
-                        <i class="icon icon-lock"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="media-heading">不定时更新</h2>
-                    </div>
-                </div>
+            <div class="col-md-4 col-sm-4 text-center" style="margin-bottom:15px;">
+                <!-- 使用新的图标 -->
+                <i class="fas fa-lock fa-3x" style="margin-bottom:15px;"></i>
+                <h2 class="media-heading">不定时更新</h2>
             </div>
-            <div class="col-md-4 col-sm-8">
-                <div class="media wow fadeInUp" data-wow-delay="1.2s">
-                    <div class="media-object media-left">
-                        <i class="icon icon-chat"></i>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="media-heading">欢迎加入联系方式交流</h2>
-                    </div>
-                </div>
+            <div class="col-md-4 col-sm-4 text-center">
+                <!-- 使用新的图标 -->
+                <i class="fas fa-comments fa-3x" style="margin-bottom:15px;"></i>
+                <h2 class="media-heading">欢迎加入联系方式交流</h2>
+               
             </div>
-            <div class="clearfix text-center col-md-12 col-sm-12">
-                <a href="https://github.com/MrOwenovo?tab=repositories"
-                   target="_blank" class="btn btn-default smoothScroll">进入MrOwenovo的github</a>
+
+            <div target="_blank" class="clearfix text-center col-md-12 col-sm-12 bottom_button">
+                <button href="https://github.com/MrOwenovo?tab=repositories"
+                   target="_blank" class="btn btn-lg btn-default btn-left smoothScroll wow fadeInUp" data-wow-delay="0.8s">进入MrOwenovo的github</button>
             </div>
         </div>
     </div>
 </section>
+<style>
+  .image-container {
+    width: 100%; /* Set image container width to 100% */
+    max-height: 5vh; /* Limit the maximum height to 80% of the viewport height */
+    margin: 0 auto; /* Center horizontally */
+    background-color: #f8f9fa; /* Set background color to white */
+    padding: 20px; /* Optional: Add padding for spacing */
+  }
+  .image-container img {
+    width: 100%; /* Set image width to 100% */
+    height: 2%; /* Maintain aspect ratio */
+  }
+</style>
+
+<div class="image-container">
+  <img src="https://gw.alipayobjects.com/mdn/rms_ee84bf/afts/img/A*RnuXTbqKFVgAAAAAAAAAAAAAARQnAQ" alt="Description of the image">
+</div>
 <section id="contact">
     <div class="container">
         <div class="row">
@@ -782,8 +956,8 @@
                     <p class="wow fadeInUp" data-wow-delay="0.6s">本人大三学生，技术尚存不足，后续不定时更新，欢迎加群交流</p>
                     <a name="contact"></a>
                 </div>
-                <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
-                    <input name="submit" type="submit" class="form-control submit" id="submit"
+                <div class="goQQ clearfix text-center col-md-4 col-sm-12">
+                    <input name="submit" type="submit" class="form-control submit smoothScroll wow fadeInUp"  data-wow-delay="0.8s" id="submit"
                            onclick="window.open('https://qm.qq.com/cgi-bin/qm/qr?k=W0-zWJPnnp2fIUzRJnqgnUxjNlTQuZj8&jump_from=webapi')"
                            value="加入QQ群">
                 </div>
@@ -791,6 +965,7 @@
         </div>
     </div>
 </section>
+
 <footer>
     <div class="container">
         <div class="row">
@@ -900,11 +1075,11 @@
 </div>
 
 <a href="#back-top" class="go-top"><i class="fa fa-angle-up"></i></a>
-<script src="https://www.fcwqmc.cn/elsta/js/jquery.js"></script>
-<script src="https://www.fcwqmc.cn/elsta/js/bootstrap.min.js"></script>
-<script src="https://www.fcwqmc.cn/elsta/js/vegas.min.js"></script>
-<script src="https://www.fcwqmc.cn/elsta/js/wow.min.js"></script>
-<script src="https://www.fcwqmc.cn/elsta/js/smoothscroll.js"></script>
+<script src="static/js/jquery.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/vegas.min.js"></script>
+<script src="static/js/wow.min.js"></script>
+<script src="static/js/smoothscroll.js"></script>
 <script src="static/js/custom.js"></script>
 <style>
     .kcboder {
@@ -1030,5 +1205,28 @@
 </script>
 
 
+<style>
+/* 基本按钮样式 */
 
+
+/* 鼠标悬停时的样式 */
+.goQQ .submit:hover {
+    
+	  background-color: #4CAF50; /* 按钮的默认背景颜色 */
+    color: white; /* 按钮文本颜色 */
+    border: none; /* 去除边框 */
+    padding: 10px 20px; /* 内边距调整 */
+    text-align: center; /* 文本居中 */
+    text-decoration: none; /* 去除下划线 */
+    display: inline-block; /* 以内联块显示 */
+    font-size: 16px; /* 字体大小 */
+    margin: 4px 2px; /* 外边距调整 */
+    cursor: pointer; /* 鼠标悬浮时显示手型光标 */
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+	background-color: #45a049; /* 按钮的悬浮背景颜色 */
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* 添加阴影效果 */
+    transform: scale(1.05); /* 稍微放大按钮 */
+}
+
+</style
 </html>

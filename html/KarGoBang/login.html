@@ -117,6 +117,14 @@
             formObject[item.name] = item.value;
         });
 
+//信息核验
+        if (formObject['username'] == "" || formObject['username'] == null) {
+            window.alert("输入账号不能为空！");
+        }
+        if (formObject['password'] == "" || formObject['password'] == null) {
+            window.alert("输入密码不能为空！");
+        }
+
         $.ajax({
             type: "post",
             url: '/api/auth/login',
