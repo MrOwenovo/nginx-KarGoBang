@@ -6,5 +6,10 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - kargobang
     volumes:
       - ./html/KarGoBang:/usr/share/nginx/html/KarGoBang
+networks:
+  kargobang:
+    driver: bridge
