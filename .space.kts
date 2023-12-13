@@ -13,7 +13,7 @@ job("Build and Deploy") {
                 docker push mrowenovo/nginx-kargobang:latest
 
                 # 使用 docker-compose 启动生产环境容器
-                docker-compose -f compose.yaml up -d
+                docker-compose -f docker-compose.yaml up -d
             """
         }
     }
