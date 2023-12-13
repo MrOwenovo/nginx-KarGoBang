@@ -1,0 +1,62 @@
+2023-12-01 04:12:55,482:DEBUG:certbot._internal.main:certbot version: 2.7.4
+2023-12-01 04:12:55,482:DEBUG:certbot._internal.main:Location of certbot entry point: C:\Program Files\Certbot\bin\certbot.exe
+2023-12-01 04:12:55,482:DEBUG:certbot._internal.main:Arguments: ['--webroot', '--preconfigured-renewal']
+2023-12-01 04:12:55,482:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-12-01 04:12:55,545:DEBUG:certbot._internal.log:Root logging level set at 30
+2023-12-01 04:12:55,545:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2023-12-01 04:12:55,545:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * webroot
+Description: Saves the necessary validation files to a .well-known/acme-challenge/ directory within the nominated webroot path. A seperate HTTP server must be running and serving files from the webroot path. HTTP challenge only (wildcards not supported).
+Interfaces: Authenticator, Plugin
+Entry point: EntryPoint(name='webroot', value='certbot._internal.plugins.webroot:Authenticator', group='certbot.plugins')
+Initialized: <certbot._internal.plugins.webroot.Authenticator object at 0x0000029717067310>
+Prep: True
+2023-12-01 04:12:55,545:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot._internal.plugins.webroot.Authenticator object at 0x0000029717067310> and installer None
+2023-12-01 04:12:55,545:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator webroot, Installer None
+2023-12-01 04:12:55,609:DEBUG:certbot._internal.main:Picked account: <Account(RegistrationResource(body=Registration(key=None, contact=(), agreement=None, status=None, terms_of_service_agreed=None, only_return_existing=None, external_account_binding=None), uri='https://acme-v02.api.letsencrypt.org/acme/acct/1441857736', new_authzr_uri=None, terms_of_service=None), e6aac5531be3535b1615f8bb5153f731, Meta(creation_dt=datetime.datetime(2023, 11, 30, 20, 12, 9, tzinfo=<UTC>), creation_host='10_0_24_6', register_to_eff='lmq122677@qq.com'))>
+2023-12-01 04:12:55,625:DEBUG:acme.client:Sending GET request to https://acme-v02.api.letsencrypt.org/directory.
+2023-12-01 04:12:55,641:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org:443
+2023-12-01 04:12:56,429:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "GET /directory HTTP/1.1" 200 752
+2023-12-01 04:12:56,429:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Thu, 30 Nov 2023 20:12:56 GMT
+Content-Type: application/json
+Content-Length: 752
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "keyChange": "https://acme-v02.api.letsencrypt.org/acme/key-change",
+  "meta": {
+    "caaIdentities": [
+      "letsencrypt.org"
+    ],
+    "termsOfService": "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
+    "website": "https://letsencrypt.org"
+  },
+  "newAccount": "https://acme-v02.api.letsencrypt.org/acme/new-acct",
+  "newNonce": "https://acme-v02.api.letsencrypt.org/acme/new-nonce",
+  "newOrder": "https://acme-v02.api.letsencrypt.org/acme/new-order",
+  "renewalInfo": "https://acme-v02.api.letsencrypt.org/draft-ietf-acme-ari-01/renewalInfo/",
+  "revokeCert": "https://acme-v02.api.letsencrypt.org/acme/revoke-cert",
+  "tXLeH5rMOuY": "https://community.letsencrypt.org/t/adding-random-entries-to-the-directory/33417"
+}
+2023-12-01 04:12:56,429:DEBUG:certbot.display.ops:No installer, picking names manually
+2023-12-01 04:12:58,807:DEBUG:certbot._internal.log:Exiting abnormally:
+Traceback (most recent call last):
+  File "runpy.py", line 197, in _run_module_as_main
+  File "runpy.py", line 87, in _run_code
+  File "C:\Program Files\Certbot\bin\certbot.exe\__main__.py", line 29, in <module>
+    sys.exit(main())
+  File "C:\Program Files\Certbot\pkgs\certbot\main.py", line 19, in main
+    return internal_main.main(cli_args)
+  File "C:\Program Files\Certbot\pkgs\certbot\_internal\main.py", line 1873, in main
+    return config.func(config, plugins)
+  File "C:\Program Files\Certbot\pkgs\certbot\_internal\main.py", line 1592, in certonly
+    domains, certname = _find_domains_or_certname(config, installer)
+  File "C:\Program Files\Certbot\pkgs\certbot\_internal\main.py", line 514, in _find_domains_or_certname
+    raise errors.Error("Please specify --domains, or --installer that "
+certbot.errors.Error: Please specify --domains, or --installer that will help in domain names autodiscovery, or --cert-name for an existing certificate name.
+2023-12-01 04:12:58,807:ERROR:certbot._internal.log:Please specify --domains, or --installer that will help in domain names autodiscovery, or --cert-name for an existing certificate name.

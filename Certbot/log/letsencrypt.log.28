@@ -1,0 +1,117 @@
+2023-12-01 04:11:52,998:DEBUG:certbot._internal.main:certbot version: 2.7.4
+2023-12-01 04:11:52,998:DEBUG:certbot._internal.main:Location of certbot entry point: C:\Program Files\Certbot\bin\certbot.exe
+2023-12-01 04:11:52,998:DEBUG:certbot._internal.main:Arguments: ['--webroot', '--preconfigured-renewal']
+2023-12-01 04:11:52,998:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#manual,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-12-01 04:11:53,061:DEBUG:certbot._internal.log:Root logging level set at 30
+2023-12-01 04:11:53,076:DEBUG:certbot._internal.plugins.selection:Requested authenticator webroot and installer None
+2023-12-01 04:11:53,076:DEBUG:certbot._internal.plugins.selection:Single candidate plugin: * webroot
+Description: Saves the necessary validation files to a .well-known/acme-challenge/ directory within the nominated webroot path. A seperate HTTP server must be running and serving files from the webroot path. HTTP challenge only (wildcards not supported).
+Interfaces: Authenticator, Plugin
+Entry point: EntryPoint(name='webroot', value='certbot._internal.plugins.webroot:Authenticator', group='certbot.plugins')
+Initialized: <certbot._internal.plugins.webroot.Authenticator object at 0x00000202E0B88310>
+Prep: True
+2023-12-01 04:11:53,076:DEBUG:certbot._internal.plugins.selection:Selected authenticator <certbot._internal.plugins.webroot.Authenticator object at 0x00000202E0B88310> and installer None
+2023-12-01 04:11:53,076:INFO:certbot._internal.plugins.selection:Plugins selected: Authenticator webroot, Installer None
+2023-12-01 04:11:59,227:DEBUG:acme.client:Sending GET request to https://acme-v02.api.letsencrypt.org/directory.
+2023-12-01 04:11:59,227:DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org:443
+2023-12-01 04:12:00,123:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "GET /directory HTTP/1.1" 200 752
+2023-12-01 04:12:00,123:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Thu, 30 Nov 2023 20:11:59 GMT
+Content-Type: application/json
+Content-Length: 752
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "4Ou-Wp4Uhpw": "https://community.letsencrypt.org/t/adding-random-entries-to-the-directory/33417",
+  "keyChange": "https://acme-v02.api.letsencrypt.org/acme/key-change",
+  "meta": {
+    "caaIdentities": [
+      "letsencrypt.org"
+    ],
+    "termsOfService": "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
+    "website": "https://letsencrypt.org"
+  },
+  "newAccount": "https://acme-v02.api.letsencrypt.org/acme/new-acct",
+  "newNonce": "https://acme-v02.api.letsencrypt.org/acme/new-nonce",
+  "newOrder": "https://acme-v02.api.letsencrypt.org/acme/new-order",
+  "renewalInfo": "https://acme-v02.api.letsencrypt.org/draft-ietf-acme-ari-01/renewalInfo/",
+  "revokeCert": "https://acme-v02.api.letsencrypt.org/acme/revoke-cert"
+}
+2023-12-01 04:12:08,948:DEBUG:acme.client:Requesting fresh nonce
+2023-12-01 04:12:08,948:DEBUG:acme.client:Sending HEAD request to https://acme-v02.api.letsencrypt.org/acme/new-nonce.
+2023-12-01 04:12:09,256:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "HEAD /acme/new-nonce HTTP/1.1" 200 0
+2023-12-01 04:12:09,256:DEBUG:acme.client:Received response:
+HTTP 200
+Server: nginx
+Date: Thu, 30 Nov 2023 20:12:09 GMT
+Connection: keep-alive
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index"
+Replay-Nonce: 65r2Q3lMuE843MOHufXDK4gEJiTvUn5L9JImnIvwbCBjPZXVKy0
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+
+2023-12-01 04:12:09,256:DEBUG:acme.client:Storing nonce: 65r2Q3lMuE843MOHufXDK4gEJiTvUn5L9JImnIvwbCBjPZXVKy0
+2023-12-01 04:12:09,256:DEBUG:acme.client:JWS payload:
+b'{\n  "contact": [\n    "mailto:lmq122677@qq.com"\n  ],\n  "termsOfServiceAgreed": true\n}'
+2023-12-01 04:12:09,271:DEBUG:acme.client:Sending POST request to https://acme-v02.api.letsencrypt.org/acme/new-acct:
+{
+  "protected": "eyJhbGciOiAiUlMyNTYiLCAiandrIjogeyJuIjogInB1Qkg4X3ozLXNCOURRdGdCQzREUUt5UWNrendyRlU3VXZEY0ViSmZfX3R3dFhtSU5kcVZZeE1EZGhOb2FzZ0pQZVhFVnVaVVJCNEhRZWpCSmM1Y05HdnF5Q01DZWhpcmRlOTA5djdIWXhURVVMbnBzOUdpVTNnek5YN1N1VzFrcGNDajFRbEJ0aDFlbnNlaDZNUHk2N0Zjdi1CVlI5clRmUGZXckM4SlBPa3RpbktqMEIxV0dlRXlteVU2aGVUamNfZjBCM3FSc3BWTFdQNzVzaE41WlNCZldZaTI5dFVJb3I2OEhoZXI2aEFlNUVaYzcwQVBpMzAzU3VZcHJ4RW5FY21tVno1Q1Z4OEl3MjFoOS1weDZJYjUzUWx0dVRwTmZSb1lZQ2N1a3hxYmVPOGJlOUs0RFJoUnVzRlF2UmRuNnhBRm55SUxWT1k0ODBtb0ptaGVYdyIsICJlIjogIkFRQUIiLCAia3R5IjogIlJTQSJ9LCAibm9uY2UiOiAiNjVyMlEzbE11RTg0M01PSHVmWERLNGdFSmlUdlVuNUw5Skltbkl2d2JDQmpQWlhWS3kwIiwgInVybCI6ICJodHRwczovL2FjbWUtdjAyLmFwaS5sZXRzZW5jcnlwdC5vcmcvYWNtZS9uZXctYWNjdCJ9",
+  "signature": "cmll9Ra1HtiNrFB2NmPtDvi1xg-2JX1a3PHiHweECImiUaAwuFJrqC0Qg9PizmxuK7n0qdBEAcrkVhi2b78AmEu-Ix9KIjEj_Zt2pqdqofsCgbVCewCSRKM5oAmm0TB4EitSf7INdckTer7jBwehQ5ICLOA00l4AlpLFp8pQzwtqg9CR9c3LHkN03yCvo-1I_VGWpdKs2yBBACO3SqEtnWZ3WdHjN3TPl2ZJEa8UtFrvBDCeWSfkAxtr2RwP15LF42Gj6IPOUUK4TPlhBIBFymNNjR_yuyRbSR2m2l8zvIx7LvgWznrV_O8SL7e3ep3356dUumTgdVIt-1NN13uwTA",
+  "payload": "ewogICJjb250YWN0IjogWwogICAgIm1haWx0bzpsbXExMjI2NzdAcXEuY29tIgogIF0sCiAgInRlcm1zT2ZTZXJ2aWNlQWdyZWVkIjogdHJ1ZQp9"
+}
+2023-12-01 04:12:09,581:DEBUG:urllib3.connectionpool:https://acme-v02.api.letsencrypt.org:443 "POST /acme/new-acct HTTP/1.1" 201 559
+2023-12-01 04:12:09,581:DEBUG:acme.client:Received response:
+HTTP 201
+Server: nginx
+Date: Thu, 30 Nov 2023 20:12:09 GMT
+Content-Type: application/json
+Content-Length: 559
+Connection: keep-alive
+Boulder-Requester: 1441857736
+Cache-Control: public, max-age=0, no-cache
+Link: <https://acme-v02.api.letsencrypt.org/directory>;rel="index", <https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf>;rel="terms-of-service"
+Location: https://acme-v02.api.letsencrypt.org/acme/acct/1441857736
+Replay-Nonce: 65r2Q3lMd4v3zS4WFi613AoWti6Zfa-db0KcmBrDzCovjbS_kpQ
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=604800
+
+{
+  "key": {
+    "kty": "RSA",
+    "n": "puBH8_z3-sB9DQtgBC4DQKyQckzwrFU7UvDcEbJf__twtXmINdqVYxMDdhNoasgJPeXEVuZURB4HQejBJc5cNGvqyCMCehirde909v7HYxTEULnps9GiU3gzNX7SuW1kpcCj1QlBth1enseh6MPy67Fcv-BVR9rTfPfWrC8JPOktinKj0B1WGeEymyU6heTjc_f0B3qRspVLWP75shN5ZSBfWYi29tUIor68Hher6hAe5EZc70APi303SuYprxEnEcmmVz5CVx8Iw21h9-px6Ib53QltuTpNfRoYYCcukxqbeO8be9K4DRhRusFQvRdn6xAFnyILVOY480moJmheXw",
+    "e": "AQAB"
+  },
+  "contact": [
+    "mailto:lmq122677@qq.com"
+  ],
+  "initialIp": "43.138.36.104",
+  "createdAt": "2023-11-30T20:12:09.427820412Z",
+  "status": "valid"
+}
+2023-12-01 04:12:09,581:DEBUG:acme.client:Storing nonce: 65r2Q3lMd4v3zS4WFi613AoWti6Zfa-db0KcmBrDzCovjbS_kpQ
+2023-12-01 04:12:12,960:DEBUG:certbot._internal.display.obj:Notifying user: Account registered.
+2023-12-01 04:12:12,960:DEBUG:certbot._internal.main:Picked account: <Account(RegistrationResource(body=Registration(key=JWKRSA(key=<ComparableRSAKey(<cryptography.hazmat.backends.openssl.rsa._RSAPublicKey object at 0x00000202E0C24D30>)>), contact=('mailto:lmq122677@qq.com',), agreement=None, status='valid', terms_of_service_agreed=None, only_return_existing=None, external_account_binding=None), uri='https://acme-v02.api.letsencrypt.org/acme/acct/1441857736', new_authzr_uri=None, terms_of_service='https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf'), e6aac5531be3535b1615f8bb5153f731, Meta(creation_dt=datetime.datetime(2023, 11, 30, 20, 12, 9, tzinfo=<UTC>), creation_host='10_0_24_6', register_to_eff='lmq122677@qq.com'))>
+2023-12-01 04:12:12,960:DEBUG:certbot.display.ops:No installer, picking names manually
+2023-12-01 04:12:53,404:DEBUG:certbot._internal.log:Exiting abnormally:
+Traceback (most recent call last):
+  File "runpy.py", line 197, in _run_module_as_main
+  File "runpy.py", line 87, in _run_code
+  File "C:\Program Files\Certbot\bin\certbot.exe\__main__.py", line 29, in <module>
+    sys.exit(main())
+  File "C:\Program Files\Certbot\pkgs\certbot\main.py", line 19, in main
+    return internal_main.main(cli_args)
+  File "C:\Program Files\Certbot\pkgs\certbot\_internal\main.py", line 1873, in main
+    return config.func(config, plugins)
+  File "C:\Program Files\Certbot\pkgs\certbot\_internal\main.py", line 1592, in certonly
+    domains, certname = _find_domains_or_certname(config, installer)
+  File "C:\Program Files\Certbot\pkgs\certbot\_internal\main.py", line 514, in _find_domains_or_certname
+    raise errors.Error("Please specify --domains, or --installer that "
+certbot.errors.Error: Please specify --domains, or --installer that will help in domain names autodiscovery, or --cert-name for an existing certificate name.
+2023-12-01 04:12:53,408:ERROR:certbot._internal.log:Please specify --domains, or --installer that will help in domain names autodiscovery, or --cert-name for an existing certificate name.
